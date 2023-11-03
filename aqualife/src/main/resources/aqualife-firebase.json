@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "aqualife-66093",
+  "private_key_id": "2f4429faa10f7fc34e6b86b85590c30bafa436ff",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC+hdO/2uXdoTiv\nLXPys0v7LQtvQSq9GFexGR2m4ji1IkZjSJ7Z7iq3dVxS0XW2Fsb8G9LR9YWJA3sm\nIPmTPoThwI6//COdNzldBNW9z2qbfpvXNJ64UxlH2o7Z8RuAGkCLq1DEb24Qyh+X\ntwvOjeMdE0pVCw8qjCSN6Du81HxDltzkdoj2A5h/ClnYTLzoLpHTsOFmmsECsrok\ngdYGFHh9ReeFQlkHnHwm96ZQnOhC4PYiIoENBUuzR5u/Q66sC1g1eM/CRdxL3GpR\nrXu5FkyV/DoXdDwZcUMr4Zy0B9tbfaGuKOiUt4j7qJQiAZOHCl/8ykZjU9DvHTMn\nCprOBzBdAgMBAAECggEAIbu4xQa5Pe9ahbvGxJFl8dxlIqb3bgE2H5t6kk6KK1oc\n+93DEIOYqSB8vwYqsRmh1EgJ4RZ3dQ26e4MJpX5DkWQiclAurxq0y6k8Pg4QSmVV\nqvo8YxcFiiEiu2hzDdC4HnKwC4POSWc8RkTI8KLTNFXyypF5dzdWjpCwqQu3T9ED\nZ5vgRhI2YKhrhXkEGcK63zGKh16awxwja9yUKu8k406X7mTAuLGlafLzv2/etBXX\nOMmmz9wpbjUCdhrt8/oalhpcVNHmn6Ef2/wSoHrc7NGJnkhwP43YLOD+EBS8LztS\nKHL8xNqcnFvOHoPIWUBn8/33nemVxaQcVl2wWxHu+QKBgQDfjbblsNGu82U2FSw0\nwAJoG95HohCTnqQ/IHQjq6sBeWFSDFqU5z3VWcC373HUaeW+u3GsQW23apfV+m2u\n0hePO7rPIv3uMbt3vsa5WUgupYA8b0hgFyqWrx1ZBkbeHJU23Mo+Dvg7CsXi/Aal\n2e6FBxd4UkkPitIJsnl6NYlsaQKBgQDaLNSWjBuGs0cyStQefFTDzLHwUBEfAd9g\nuUC7B1kJzJb+H3UDtE2B1FOzcwe+DjzTuRKKd/1HIve8CX6pLZImJi5xJ9aus4IU\nnkw/K93FnF/aNR+FSLNu/ZfRCze/bHcnfBS/pnCmN24Z6E2QZHssqZkRQi+RKkYI\ndPU6XoR11QKBgB5TIO5DcA4lYiNV9+sn6KuqrBpXd5wutuUBR//Wt5m5l2QD3P25\n6H9ab3QD/RLtUobu8lqFfZaV1Qbns501TpDVb1/NxVhcUqvJqzdVTx9Uv/JyvgSa\n3+IU2wxKd66FfhA1HxIQAcgwi+tgeJ5i06Ij9iESOGrtT9SU6zmSrZORAoGANdV4\nA0nBBQS5nZw/KOKO291nTp/DCb6hirFLWprein90BnJmoipcMZvdp1rL30aOFcQF\n4irnUSU8saY6Ha6D8Gvda8hjvanHgCTrNW8ygq8qK6KOC4o71Dg4vLki4VX3NMP2\nLq/3/duRjEz4zpcsmYGjplGJgS1IKJALboKh9p0CgYEAtmwVQHujPGBVW1qvNqFT\neW6909pf6KuXhw5dTnEKftUQr1FAPwq4gz1CzKJr3L3xl40ce2y8IaJhKQ0YloDy\npVK3q717TBQOVeypYapwJMvUA2EG1U9YPsUcNHd5UyGzFGq9uQwPF96LYrQEeRuG\n2yEP+197knyWDIJyP8jNuY0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-3abr9@aqualife-66093.iam.gserviceaccount.com",
+  "client_id": "113226416744133552896",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-3abr9%40aqualife-66093.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
