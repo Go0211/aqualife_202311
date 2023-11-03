@@ -1,16 +1,15 @@
 package com.aqualife.aqualife.service;
 
-import com.aqualife.aqualife.model.User;
-
-import java.lang.reflect.Member;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
+import com.aqualife.aqualife.dto.UsersDto;
+import com.aqualife.aqualife.model.Users;
 
 public interface UserService {
 
-    public String insertUser(User user) throws Exception;
-    public User getUserDetail(String id) throws Exception;
-    public String updateUser(User user) throws Exception;
+    public boolean login(String email, String password) throws Exception;
+    public UsersDto getUsersDto(Users users) throws Exception;
+    public String insertUser(UsersDto usersDto) throws Exception;
+    public Users getUserDetail(String id) throws Exception;
+    public String updateUser(UsersDto usersDto) throws Exception;
     public String deleteUser(String id) throws Exception;
 
 }
