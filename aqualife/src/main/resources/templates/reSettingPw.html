@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>reSetting</title>
+</head>
+<body>
+<form th:action="@{/reSettingPw}" method="post">
+    <input type="hidden" name="email" th:value="${usersDto.getEmail()}">
+    <input type="hidden" name="phone" th:value="${usersDto.getPhone()}">
+    <input type="password" name="beforePassword" placeholder="현재 비밀번호">
+    <input type="password" name="newPassword" placeholder="새 비밀번호">
+    <button type="submit">비밀번호 변경</button>
+</form>
+
+</body>
+</html>

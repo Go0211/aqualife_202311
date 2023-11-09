@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>rename</title>
+</head>
+<body>
+<form th:action="@{/fishbowlRename}" method="post">
+    <input type="hidden" name="fishbowl_beforeName" th:value="${fishbowlName}">
+    <input type="text" name="fishbowl_afterName" placeholder="fishbowl" />
+    <button type="submit">login</button>
+</form>
+</body>
+</html>

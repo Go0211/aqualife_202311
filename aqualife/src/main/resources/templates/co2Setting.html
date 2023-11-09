@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/co2Setting(co2Index=${co2Index})}" method="post" th:object="${co2Time}">
+    <select name="startHour" id="startHour">
+        <option value="">--Start Hour--</option>
+        <option th:each="number : ${#numbers.sequence(0,23)}" th:text="${number}" th:value="${number}"></option>
+    </select>
+    :
+    <select name="startMinute" id="startMinute">
+        <option value="">--Start Minute--</option>
+        <option th:each="number : ${#numbers.sequence(0,59)}" th:text="${number}" th:value="${number}"></option>
+    </select>
+    <br>
+    <select name="endHour" id="endHour">
+        <option value="">--End Hour--</option>
+        <option th:each="number : ${#numbers.sequence(0,23)}" th:text="${number}" th:value="${number}"></option>
+    </select>
+    :
+    <select name="endMinute" id="endMinute">
+        <option value="">--End Minute--</option>
+        <option th:each="number : ${#numbers.sequence(0,59)}" th:text="${number}" th:value="${number}"></option>
+    </select>
+    <button type="submit">저장</button>
+</form>
+</body>
+</html>

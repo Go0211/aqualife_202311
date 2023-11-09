@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="list : ${co2List}">
+    <a th:href="@{/co2Setting(co2=${list}, co2Index=${listStat.index})}">
+        <span th:text="${list.startTime}"></span>
+        <span th:text="${list.endTime}"></span>
+        <span th:text="${list.state}"></span>
+    </a>
+<!--    <span>-</span>-->
+<!--    <a th:href="@{/fishbowlDelete(fishbowl=${fbList.getFishbowl()})}">Delete</a>-->
+<!--    <span>-</span>-->
+<!--    <a th:href="@{/fishbowlRename(fishbowl=${fbList.getFishbowl()})}">Rename</a>-->
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="${fishbowlData.getEmail()}"></p>
+<p th:text="${fishbowlData.getFishbowl()}"></p>
+<p th:text="${fishbowlData.getCo2().get(0).isState()}"></p>
+<a th:href="@{co2Main}">클릭</a>
+</body>
+</html>

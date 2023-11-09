@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>findPw</title>
 </head>
 <body>
-
+<form th:action="@{/findPw}" method="post">
+    <input type="text" name="email" placeholder="email">
+    <input type="text" name="phone" placeholder="phone">
+    <button type="submit">비밀번호 변경</button>
+</form>
 </body>
 </html>

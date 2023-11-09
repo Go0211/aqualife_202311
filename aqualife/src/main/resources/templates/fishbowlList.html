@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>fishbowl List</title>
+</head>
+<body>
+<div th:each="fbList : ${fishbowlList}">
+    <a th:href="@{/(fishbowl=${fbList.getFishbowl()})}">
+        <span th:text="${fbList.getEmail()}"></span>
+        <span th:text="${fbList.getFishbowl()}"></span>
+    </a>
+    <span>-</span>
+    <a th:href="@{/fishbowlDelete(fishbowl=${fbList.getFishbowl()})}">Delete</a>
+    <span>-</span>
+    <a th:href="@{/fishbowlRename(fishbowl=${fbList.getFishbowl()})}">Rename</a>
+</div>
+</body>
+</html>
