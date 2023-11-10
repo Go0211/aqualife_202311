@@ -2,6 +2,7 @@ package com.aqualife.aqualife.service;
 
 import com.aqualife.aqualife.model.Co2;
 import com.aqualife.aqualife.model.Fishbowl;
+import com.aqualife.aqualife.model.Light;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
@@ -24,7 +25,8 @@ public class FishbowlServiceImpl implements FishbowlService {
             Fishbowl fishbowl1 = Fishbowl.builder()
                     .email(email)
                     .fishbowl(fishbowl)
-                    .co2(new ArrayList())
+                    .co2(new ArrayList<Co2>())
+                    .light(new ArrayList<Light>())
                     .build();
 
             Firestore firestore = FirestoreClient.getFirestore();

@@ -5,12 +5,14 @@
     <title>Title</title>
 </head>
 <body>
+<a th:href="@{/co2Create}">create</a><br>
 <div th:each="list : ${co2List}">
     <a th:href="@{/co2Setting(co2=${list}, co2Index=${listStat.index})}">
         <span th:text="${list.startTime}"></span>
         <span th:text="${list.endTime}"></span>
-        <span th:text="${list.state}"></span>
     </a>
+    <a th:href="@{/co2StateChange(co2Index=${listStat.index})}" th:text="${list.state}">delete</a>
+    <a th:href="@{/co2Delete(co2Index=${listStat.index})}">delete</a>
 <!--    <span>-</span>-->
 <!--    <a th:href="@{/fishbowlDelete(fishbowl=${fbList.getFishbowl()})}">Delete</a>-->
 <!--    <span>-</span>-->

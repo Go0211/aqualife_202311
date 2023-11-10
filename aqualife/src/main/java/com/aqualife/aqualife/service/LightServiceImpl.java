@@ -3,30 +3,30 @@ package com.aqualife.aqualife.service;
 import com.aqualife.aqualife.Data.Times;
 import com.aqualife.aqualife.model.Co2;
 import com.aqualife.aqualife.model.Fishbowl;
+import com.aqualife.aqualife.model.Light;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.*;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.DocumentSnapshot;
+import com.google.cloud.firestore.Firestore;
 import com.google.firebase.cloud.FirestoreClient;
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.units.qual.C;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.function.UnaryOperator;
 
 @RequiredArgsConstructor
 @Service
-public class Co2ServiceImpl implements Co2Service{
+public class LightServiceImpl implements LightService{
     public static final String COLLECTION_NAME = "fishbowl";
-    @Override
-    public List<Co2> getAllCo2(Fishbowl fishbowlData) {
-        List<Co2> co2List = fishbowlData.getCo2();
 
-        return co2List;
+    @Override
+    public List<Light> getAllLight(Fishbowl fishbowlData) {
+        List<Light> lightList = fishbowlData.getLight();
+
+        return lightList;
     }
 
-    public Co2 getCo2(String email, String fishbowl, int co2Stat) throws Exception{
+    public Light getLight(String email, String fishbowl, int lightStat) throws Exception {
         String fishbowlName = email +"_" + fishbowl;
 
         Firestore firestore = FirestoreClient.getFirestore();
@@ -35,17 +35,17 @@ public class Co2ServiceImpl implements Co2Service{
         ApiFuture<DocumentSnapshot> apiFuture = documentReference.get();
         DocumentSnapshot documentSnapshot = apiFuture.get();
 
-        Co2 co2 = null;
+        Light light = null;
 
         if (documentSnapshot.exists()) {
-            co2 = documentSnapshot.toObject(Fishbowl.class).getCo2().get(co2Stat);
+            light = documentSnapshot.toObject(Fishbowl.class).getLight().get(lightStat);
         }
 
-        return co2;
+        return light;
     }
 
     @Override
-    public void co2Change(String email, String fishbowl, int co2Stat, Times times) throws Exception {
+    public void lightChange(String email, String fishbowl, int lightStat, Times times) throws Exception {
         String fishbowlName = email +"_" + fishbowl;
 
         Firestore firestore = FirestoreClient.getFirestore();
@@ -57,20 +57,20 @@ public class Co2ServiceImpl implements Co2Service{
         String startTime = times.getStartHour()+""+times.getStartMinute();
         String endTime = times.getEndHour()+""+times.getEndMinute();
 
-        Co2 changeCo2 = new Co2(Integer.parseInt(startTime),
+        Light changeLight = new Light(Integer.parseInt(startTime),
                 Integer.parseInt(endTime),
                 true);
 
         Fishbowl fishbowl1 = null;
         if (documentSnapshot.exists()) {
             fishbowl1 = documentSnapshot.toObject(Fishbowl.class);
-            fishbowl1.getCo2().set(co2Stat, changeCo2);
+            fishbowl1.getLight().set(lightStat, changeLight);
             documentReference.set(fishbowl1);
         }
     }
 
     @Override
-    public void co2Delete(String email, String fishbowl, int co2Index) throws Exception {
+    public void lightDelete(String email, String fishbowl, int lightIndex) throws Exception {
         String fishbowlName = email +"_" + fishbowl;
 
         Firestore firestore = FirestoreClient.getFirestore();
@@ -82,13 +82,13 @@ public class Co2ServiceImpl implements Co2Service{
         Fishbowl fishbowl1 = null;
         if (documentSnapshot.exists()) {
             fishbowl1 = documentSnapshot.toObject(Fishbowl.class);
-            fishbowl1.getCo2().remove(co2Index);
+            fishbowl1.getLight().remove(lightIndex);
             documentReference.set(fishbowl1);
         }
     }
 
     @Override
-    public void co2Create(String email, String fishbowl, Times times) throws Exception {
+    public void lightCreate(String email, String fishbowl, Times times) throws Exception {
         String fishbowlName = email +"_" + fishbowl;
 
         Firestore firestore = FirestoreClient.getFirestore();
@@ -100,20 +100,20 @@ public class Co2ServiceImpl implements Co2Service{
         String startTime = times.getStartHour()+""+times.getStartMinute();
         String endTime = times.getEndHour()+""+times.getEndMinute();
 
-        Co2 createCo2 = new Co2(Integer.parseInt(startTime),
+        Light createLight = new Light(Integer.parseInt(startTime),
                 Integer.parseInt(endTime),
                 true);
 
         Fishbowl fishbowl1 = null;
         if (documentSnapshot.exists()) {
             fishbowl1 = documentSnapshot.toObject(Fishbowl.class);
-            fishbowl1.getCo2().add(createCo2);
+            fishbowl1.getLight().add(createLight);
             documentReference.set(fishbowl1);
         }
     }
 
     @Override
-    public void co2StateChange(String email, String fishbowl, int co2Index) throws Exception{
+    public void lightStateChange(String email, String fishbowl, int lightIndex) throws Exception {
         String fishbowlName = email +"_" + fishbowl;
 
         Firestore firestore = FirestoreClient.getFirestore();
@@ -126,12 +126,13 @@ public class Co2ServiceImpl implements Co2Service{
         if (documentSnapshot.exists()) {
             fishbowl1 = documentSnapshot.toObject(Fishbowl.class);
 
-            Co2 changeCo2 = new Co2(fishbowl1.getCo2().get(co2Index).getStartTime(),
-                    fishbowl1.getCo2().get(co2Index).getEndTime(),
-                    !fishbowl1.getCo2().get(co2Index).isState());
+            Light changeLight = new Light(fishbowl1.getLight().get(lightIndex).getStartTime(),
+                    fishbowl1.getLight().get(lightIndex).getEndTime(),
+                    !fishbowl1.getLight().get(lightIndex).isState());
 
-            fishbowl1.getCo2().set(co2Index, changeCo2);
+            fishbowl1.getLight().set(lightIndex, changeLight);
             documentReference.set(fishbowl1);
         }
     }
 }
+

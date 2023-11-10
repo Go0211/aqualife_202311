@@ -2,6 +2,7 @@ package com.aqualife.aqualife.dto;
 
 import com.aqualife.aqualife.model.Co2;
 import com.aqualife.aqualife.model.Fishbowl;
+import com.aqualife.aqualife.model.Light;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,12 +17,14 @@ public class FishbowlDto {
     private String email;
     private String fishbowl;
     private List<Co2> co2;
+    private List<Light> light;
 
     @Builder
-    public FishbowlDto(String email, String fishbowl, List<Co2> co2) {
+    public FishbowlDto(String email, String fishbowl, List<Co2> co2, List<Light> light) {
         this.email = email;
         this.fishbowl = fishbowl;
         this.co2 = co2;
+        this.light = light;
     }
 
     public Fishbowl toEntity() {
@@ -29,6 +32,7 @@ public class FishbowlDto {
                 .email(email)
                 .fishbowl(fishbowl)
                 .co2(co2)
+                .light(light)
                 .build();
     }
 }

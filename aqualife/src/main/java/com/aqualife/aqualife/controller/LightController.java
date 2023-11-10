@@ -3,8 +3,9 @@ package com.aqualife.aqualife.controller;
 import com.aqualife.aqualife.Data.Times;
 import com.aqualife.aqualife.model.Co2;
 import com.aqualife.aqualife.model.Fishbowl;
-import com.aqualife.aqualife.service.Co2Service;
+import com.aqualife.aqualife.model.Light;
 import com.aqualife.aqualife.service.FishbowlService;
+import com.aqualife.aqualife.service.LightService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -17,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
-public class Co2Controller {
-    private final Co2Service co2Service;
+public class LightController {
+    private final LightService lightService;
     private final FishbowlService fishbowlService;
 
-    @GetMapping("co2Main")
-    public String co2Main(HttpServletRequest httpServletRequest,
+    @GetMapping("lightMain")
+    public String lightMain(HttpServletRequest httpServletRequest,
                           Model model,
                           @RequestParam(required = false) String f_name) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);
@@ -37,85 +38,85 @@ public class Co2Controller {
         }
 
         Fishbowl fishbowl = fishbowlService.getFishbowl(email, fishbowlName);
-        model.addAttribute("fishbowlCo2", fishbowl.getCo2());
+        model.addAttribute("fishbowlLight", fishbowl.getLight());
         model.addAttribute("fishbowlList", fishbowlService.getAllFishbowl(email));
 
-        return "co2Main";
+        return "lightMain";
     }
 
-    @GetMapping("co2Create")
-    public String co2Create() {
-        return "co2Create";
+    @GetMapping("lightCreate")
+    public String lightCreate() {
+        return "lightCreate";
     }
 
-    @PostMapping("co2Create")
-    public String co2Create(@ModelAttribute("co2Time")Times times,
-                             HttpServletRequest httpServletRequest) throws Exception {
+    @PostMapping("lightCreate")
+    public String lightCreate(@ModelAttribute("lightTime") Times times,
+                            HttpServletRequest httpServletRequest) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);
         String email = (String)session.getAttribute("email");
         String fishbowl = (String)session.getAttribute("fishbowl");
 
-        co2Service.co2Create(email, fishbowl, times);
+        lightService.lightCreate(email, fishbowl, times);
 
-        return "redirect:/co2List";
+        return "redirect:/lightList";
     }
 
-    @GetMapping("co2List")
-    public String co2List(HttpServletRequest httpServletRequest,
+    @GetMapping("lightList")
+    public String lightList(HttpServletRequest httpServletRequest,
                           Model model) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);
         String email = (String)session.getAttribute("email");
         String fishbowl = (String)session.getAttribute("fishbowl");
 
         Fishbowl fishbowlData = fishbowlService.getFishbowl(email, fishbowl);
-        model.addAttribute("co2List", co2Service.getAllCo2(fishbowlData));
+        model.addAttribute("lightList", lightService.getAllLight(fishbowlData));
 
-        return "co2List";
+        return "lightList";
     }
 
-    @GetMapping("co2Setting")
-    public String co2Setting(Model model, @ModelAttribute("co2") Co2 co2,
-                             @RequestParam String co2Index) {
-        model.addAttribute("co2", co2);
-        model.addAttribute("co2Index", co2Index);
+    @GetMapping("lightSetting")
+    public String lightSetting(Model model, @ModelAttribute("light") Light light,
+                             @RequestParam String lightIndex) {
+        model.addAttribute("light", light);
+        model.addAttribute("lightIndex", lightIndex);
 
-        return "co2Setting";
+        return "lightSetting";
     }
 
-    @PostMapping("co2Setting")
-    public String co2Setting(@ModelAttribute("co2Time")Times times,
-                             @RequestParam int co2Index,
+    @PostMapping("lightSetting")
+    public String lightSetting(@ModelAttribute("lightTime")Times times,
+                             @RequestParam int lightIndex,
                              HttpServletRequest httpServletRequest) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);
         String email = (String)session.getAttribute("email");
         String fishbowl = (String)session.getAttribute("fishbowl");
 
-        co2Service.co2Change(email, fishbowl, co2Index, times);
+        lightService.lightChange(email, fishbowl, lightIndex, times);
 
-        return "redirect:/co2List";
+        return "redirect:/lightList";
     }
 
-    @GetMapping("co2StateChange")
-    public String co2StateChange(@RequestParam int co2Index,
+    @GetMapping("lightStateChange")
+    public String lightStateChange(@RequestParam int lightIndex,
                                  HttpServletRequest httpServletRequest) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);
         String email = (String)session.getAttribute("email");
         String fishbowl = (String)session.getAttribute("fishbowl");
 
-        co2Service.co2StateChange(email, fishbowl, co2Index);
+        lightService.lightStateChange(email, fishbowl, lightIndex);
 
-        return "redirect:/co2List";
+        return "redirect:/lightList";
     }
 
-    @GetMapping("co2Delete")
-    public String co2Delete(@RequestParam int co2Index,
+    @GetMapping("lightDelete")
+    public String lightDelete(@RequestParam int lightIndex,
                             HttpServletRequest httpServletRequest) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);
         String email = (String)session.getAttribute("email");
         String fishbowl = (String)session.getAttribute("fishbowl");
 
-        co2Service.co2Delete(email, fishbowl, co2Index);
+        lightService.lightDelete(email, fishbowl, lightIndex);
 
-        return "redirect:/co2List";
+        return "redirect:/lightList";
     }
 }

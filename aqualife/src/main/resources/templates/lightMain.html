@@ -5,6 +5,16 @@
     <title>Title</title>
 </head>
 <body>
+image
+<button>on</button>
+<button>off</button>
+<a th:href="@{/lightList}">list</a>
 
+<div th:each="fbList : ${fishbowlList}">
+    <a th:href="@{/lightMain(f_name=${fbList.getFishbowl()})}">
+        <span th:text="${fbList.getEmail()}"></span>
+        <span th:text="${fbList.getFishbowl()}"></span>
+    </a>
+</div>
 </body>
 </html>

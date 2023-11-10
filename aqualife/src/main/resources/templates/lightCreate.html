@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/lightSetting(lightIndex=${lightIndex})}" method="post" th:object="${lightTime}">
+<form th:action="@{/lightCreate}" method="post" th:object="${lightTime}">
     <select name="startHour" id="startHour">
         <option value="">--Start Hour--</option>
         <option th:each="number : ${#numbers.sequence(0,23)}" th:text="${number}" th:value="${number}"></option>
