@@ -125,7 +125,7 @@ public class UserServiceImpl implements UserService {
     public boolean checkUserJoin(UsersDto usersDto) {
         if (usersDto.getEmail() != null && usersDto.getEmail().length() != 0 &&
                 usersDto.getPassword() != null && usersDto.getPassword().length() != 0 &&
-                usersDto.getPhone() != null && usersDto.getEmail().length() == 11
+                usersDto.getPhone() != null && usersDto.getPhone().length() == 11
         ) {
             return true;
         } else {

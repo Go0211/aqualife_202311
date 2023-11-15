@@ -33,7 +33,7 @@ public class UserController {
         if (check != null && check.equals("true")) {
             session.setAttribute("email", email);
             session.setMaxInactiveInterval(-1);
-            return "fishbowlList";
+            return "redirect:/fishbowlList";
         } else {
             return "fault";
         }
@@ -60,7 +60,7 @@ public class UserController {
             );
 
             if (check) {
-                return "ok";
+                return "redirect:/login";
             } else {
                 return "fault";
             }

@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+image
+<p th:text="${fishbowlPh.getPhState()}"></p>
+<a th:href="@{/phSetting}">setting</a>
 
+<div th:each="fbList : ${fishbowlList}">
+    <a th:href="@{/phMain(f_name=${fbList.getFishbowl()})}">
+        <span th:text="${fbList.getEmail()}"></span>
+        <span th:text="${fbList.getFishbowl()}"></span>
+    </a>
+</div>
 </body>
 </html>

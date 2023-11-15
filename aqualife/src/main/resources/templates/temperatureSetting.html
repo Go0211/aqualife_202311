@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<form th:action="@{/temperatureSetting}" method="post" th:object="${temperatureSetting}">
+    <select name="tempStay" id="tempStay">
+        <option th:text="${temperatureSetting.getTempState()}" th:value="${temperatureSetting.getTempState()}">
+            --유지할 온도--
+        </option>
+        <option th:each="number : ${#numbers.sequence(0,99)}" th:text="${number}" th:value="${number}"></option>
+    </select>
+    <button type="submit">저장</button>
+</form>
 </body>
 </html>

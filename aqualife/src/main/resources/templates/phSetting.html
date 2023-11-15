@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<form th:action="@{/phSetting}" method="post" th:object="${phSetting}">
+    <select name="maxPh" id="maxPh">
+        <option value="">--Start Hour--</option>
+        <option th:each="number : ${value}" th:text="${number}" th:value="${number}"></option>
+    </select>
+    ~~~~~`
+    <select name="minPh" id="minPh">
+        <option value="">--Start Minute--</option>
+        <option th:each="number : ${value}" th:text="${number}" th:value="${number}"></option>
+    </select>
+    <button type="submit">setting</button>
+</form>
 </body>
 </html>

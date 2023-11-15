@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<script>
+    function handleOnInput(el, maxlength) {
+        if(el.value.length > maxlength)  {
+            el.value
+                = el.value.substr(0, maxlength);
+        }
+    }
+</script>
+
+<body>
+<form th:action="@{/filterUpdate}" method="post">
+    <input type="hidden" name="dayId" th:value="${dayId}">
+    <select name="startHour" id="startHour">
+        <option th:value="${filterData[0]}" th:text="${filterData[0]}">--Start Hour--</option>
+        <option th:each="number : ${#numbers.sequence(0,23)}" th:text="${number}" th:value="${number}"></option>
+    </select>
+    <select name="startMinute" id="startMinute" >
+        <option th:value="${filterData[1]}" th:text="${filterData[1]}">--Start Minute--</option>
+        <option th:each="number : ${#numbers.sequence(0,59)}" th:text="${number}" th:value="${number}"></option>
+    </select>
+    <input
+            type='number'
+            oninput='handleOnInput(this, 1)'
+            name="filterRange"
+    />
+    <button type="submit">설정</button>
+</form>
+</body>
+</html>

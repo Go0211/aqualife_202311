@@ -1,8 +1,6 @@
 package com.aqualife.aqualife.dto;
 
-import com.aqualife.aqualife.model.Co2;
-import com.aqualife.aqualife.model.Fishbowl;
-import com.aqualife.aqualife.model.Light;
+import com.aqualife.aqualife.model.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,13 +16,21 @@ public class FishbowlDto {
     private String fishbowl;
     private List<Co2> co2;
     private List<Light> light;
+    private Ph ph;
+    private Temperature temperature;
+    private List<Filters> filter;
 
     @Builder
-    public FishbowlDto(String email, String fishbowl, List<Co2> co2, List<Light> light) {
+    public FishbowlDto(String email, String fishbowl, List<Co2> co2,
+                       List<Light> light, Ph ph, Temperature temperature,
+                       List<Filters> filter) {
         this.email = email;
         this.fishbowl = fishbowl;
         this.co2 = co2;
         this.light = light;
+        this.ph = ph;
+        this.temperature = temperature;
+        this.filter = filter;
     }
 
     public Fishbowl toEntity() {
@@ -33,6 +39,9 @@ public class FishbowlDto {
                 .fishbowl(fishbowl)
                 .co2(co2)
                 .light(light)
+                .ph(ph)
+                .temperature(temperature)
+                .filter(filter)
                 .build();
     }
 }

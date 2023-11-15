@@ -1,14 +1,14 @@
 package com.aqualife.aqualife.service;
 
-import com.aqualife.aqualife.model.Co2;
-import com.aqualife.aqualife.model.Fishbowl;
-import com.aqualife.aqualife.model.Light;
+import com.aqualife.aqualife.model.*;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 @RequiredArgsConstructor
@@ -21,12 +21,25 @@ public class FishbowlServiceImpl implements FishbowlService {
     public boolean createFishbowl(String email, String fishbowl) throws Exception {
         String naming = email + "_"+ fishbowl;
 
+        List<Co2> co2List = new ArrayList<>();
+        co2List.add(new Co2(0, 0, false));
+        List<Light> lightList = new ArrayList<>();
+        lightList.add(new Light(0, 0, false));
+        List<Filters> filterList = new ArrayList<>();
+        filterList.add(new Filters(
+                null,
+                null,
+                -1));
+
         if (getFishbowl(naming, fishbowl) == null) {
             Fishbowl fishbowl1 = Fishbowl.builder()
                     .email(email)
                     .fishbowl(fishbowl)
-                    .co2(new ArrayList<Co2>())
-                    .light(new ArrayList<Light>())
+                    .co2(co2List)
+                    .light(lightList)
+                    .ph(new Ph(9.9, 0.0, 5.0))
+                    .temperature(new Temperature(50, 50))
+                    .filter(filterList)
                     .build();
 
             Firestore firestore = FirestoreClient.getFirestore();
