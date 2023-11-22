@@ -5,6 +5,7 @@
     <title>fishbowl List</title>
 </head>
 <body>
+<a th:href="@{/createFishbowl}">생성하기</a>
 <div th:each="fbList : ${fishbowlList}">
     <a th:href="@{/(fishbowl=${fbList.getFishbowl()})}">
         <span th:text="${fbList.getEmail()}"></span>

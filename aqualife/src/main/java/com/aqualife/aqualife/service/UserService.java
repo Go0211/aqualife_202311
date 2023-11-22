@@ -1,6 +1,7 @@
 package com.aqualife.aqualife.service;
 
 import com.aqualife.aqualife.dto.UsersDto;
+import com.aqualife.aqualife.model.Fishbowl;
 import com.aqualife.aqualife.model.Users;
 
 public interface UserService {

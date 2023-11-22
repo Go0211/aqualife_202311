@@ -6,8 +6,9 @@
 </head>
 <body>
 image
-<button>on</button>
-<button>off</button>
+value : <span th:text="${fishbowlCo2}"></span>
+<button type="button" th:onclick="|location.href='@{/co2statechange(co2state=true)}'|">on</button>
+<button type="button" th:onclick="|location.href='@{/co2statechange(co2state=false)}'|">off</button>
 <a th:href="@{/co2List}">list</a>
 
 <div th:each="fbList : ${fishbowlList}">

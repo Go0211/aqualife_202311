@@ -7,7 +7,6 @@ import lombok.*;
 @Setter
 @ToString
 public class Users {
-
     private String email;
     private String password;
     private String phone;

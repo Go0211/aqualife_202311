@@ -7,12 +7,12 @@ import lombok.*;
 @Setter
 @ToString
 public class Light {
-    private int startTime;
-    private int endTime;
+    private String startTime;
+    private String endTime;
     private boolean state;
 
     @Builder
-    public Light(int startTime, int endTime, boolean state) {
+    public Light(String startTime, String endTime, boolean state) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.state = state;

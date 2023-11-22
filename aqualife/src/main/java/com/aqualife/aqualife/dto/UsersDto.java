@@ -1,5 +1,6 @@
 package com.aqualife.aqualife.dto;
 
+import com.aqualife.aqualife.model.Fishbowl;
 import com.aqualife.aqualife.model.Users;
 import lombok.Builder;
 import lombok.Getter;

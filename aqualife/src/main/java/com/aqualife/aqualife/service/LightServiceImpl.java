@@ -54,12 +54,10 @@ public class LightServiceImpl implements LightService{
         ApiFuture<DocumentSnapshot> apiFuture = documentReference.get();
         DocumentSnapshot documentSnapshot = apiFuture.get();
 
-        String startTime = times.getStartHour()+""+times.getStartMinute();
-        String endTime = times.getEndHour()+""+times.getEndMinute();
+        String startTime = times.getStartHour()+"_"+times.getStartMinute();
+        String endTime = times.getEndHour()+"_"+times.getEndMinute();
 
-        Light changeLight = new Light(Integer.parseInt(startTime),
-                Integer.parseInt(endTime),
-                true);
+        Light changeLight = new Light(startTime, endTime, true);
 
         Fishbowl fishbowl1 = null;
         if (documentSnapshot.exists()) {
@@ -97,12 +95,10 @@ public class LightServiceImpl implements LightService{
         ApiFuture<DocumentSnapshot> apiFuture = documentReference.get();
         DocumentSnapshot documentSnapshot = apiFuture.get();
 
-        String startTime = times.getStartHour()+""+times.getStartMinute();
-        String endTime = times.getEndHour()+""+times.getEndMinute();
+        String startTime = times.getStartHour()+"_"+times.getStartMinute();
+        String endTime = times.getEndHour()+"_"+times.getEndMinute();
 
-        Light createLight = new Light(Integer.parseInt(startTime),
-                Integer.parseInt(endTime),
-                true);
+        Light createLight = new Light(startTime, endTime, true);
 
         Fishbowl fishbowl1 = null;
         if (documentSnapshot.exists()) {

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<!-- https://sirius7.tistory.com/35 -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>달력</title>
     <style>
         td {
@@ -159,7 +158,7 @@
             const data_1 = document.createElement('input'); // input 태그 생성
             data_1.setAttribute('type', 'hidden'); // type = hidden
             data_1.setAttribute('name', 'dayId'); // 데이터의 key
-            const str = btn_id.substring(0, 4) +"_"+btn_id.substring(4,6) + "_" +
+            const str = btn_id.substring(0, 4) + "_" + btn_id.substring(4, 6) + "_" +
                 btn_id.substring(6);
 
             data_1.setAttribute('value', str); // 데이터의 value (여기서는 data1)
@@ -175,30 +174,30 @@
 </head>
 
 <body>
-<table class="Calendar">
-    <thead>
-    <tr>
-        <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
-        <td colspan="5">
-            <span id="calYear"></span>년
-            <span id="calMonth"></span>월
-        </td>
-        <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
-    </tr>
-    <tr>
-        <td>일</td>
-        <td>월</td>
-        <td>화</td>
-        <td>수</td>
-        <td>목</td>
-        <td>금</td>
-        <td>토</td>
-    </tr>
-    </thead>
+    <table class="Calendar">
+        <thead>
+            <tr>
+                <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+                <td colspan="5">
+                    <span id="calYear"></span>년
+                    <span id="calMonth"></span>월
+                </td>
+                <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+            </tr>
+            <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+            </tr>
+        </thead>
 
-    <tbody>
-    </tbody>
-</table>
+        <tbody>
+        </tbody>
+    </table>
 </body>
 
 </html>

@@ -19,11 +19,12 @@ public class FishbowlDto {
     private Ph ph;
     private Temperature temperature;
     private List<Filters> filter;
+    private List<Object> state;
 
     @Builder
     public FishbowlDto(String email, String fishbowl, List<Co2> co2,
                        List<Light> light, Ph ph, Temperature temperature,
-                       List<Filters> filter) {
+                       List<Filters> filter, List<Object> state) {
         this.email = email;
         this.fishbowl = fishbowl;
         this.co2 = co2;
@@ -31,6 +32,7 @@ public class FishbowlDto {
         this.ph = ph;
         this.temperature = temperature;
         this.filter = filter;
+        this.state = state;
     }
 
     public Fishbowl toEntity() {
@@ -42,6 +44,7 @@ public class FishbowlDto {
                 .ph(ph)
                 .temperature(temperature)
                 .filter(filter)
+                .state(state)
                 .build();
     }
 }

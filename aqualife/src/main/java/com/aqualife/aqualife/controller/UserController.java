@@ -1,6 +1,7 @@
 package com.aqualife.aqualife.controller;
 
 import com.aqualife.aqualife.dto.UsersDto;
+import com.aqualife.aqualife.model.Fishbowl;
 import com.aqualife.aqualife.model.Users;
 import com.aqualife.aqualife.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(Model model) {
-        return "login";
+        return "user/login";
     }
 
     @PostMapping("/login")
@@ -41,7 +42,7 @@ public class UserController {
 
     @GetMapping("/join")
     public String join() {
-        return "join";
+        return "user/join";
     }
 
     @PostMapping("/join")
@@ -82,7 +83,7 @@ public class UserController {
 
     @GetMapping("/findPw")
     public String findPw() {
-        return "findPw";
+        return "user/findPw";
     }
 
     @PostMapping("/findPw")
@@ -96,7 +97,7 @@ public class UserController {
         if (checkUser == null) {
             return "fault";
         } else {
-            return "reSettingPw";
+            return "user/reSettingPw";
         }
     }
 

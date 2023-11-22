@@ -6,8 +6,8 @@
 </head>
 <body>
 image
-<button>on</button>
-<button>off</button>
+<button type="button" th:onclick="|location.href='@{/lightstatechange(lightState=true)}'|">on</button>
+<button type="button" th:onclick="|location.href='@{/lightstatechange(lightState=false)}'|">off</button>
 <a th:href="@{/lightList}">list</a>
 
 <div th:each="fbList : ${fishbowlList}">

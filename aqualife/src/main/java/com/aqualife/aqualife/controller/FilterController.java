@@ -26,7 +26,7 @@ public class FilterController {
 
     @GetMapping("filterMain")
     public String filterMain(Model model) throws Exception {
-        return "filterMain";
+        return "filter/filterMain";
     }
 
     @GetMapping("filterSetting")
@@ -46,9 +46,9 @@ public class FilterController {
 
         if (filterData != null) {
             model.addAttribute("filterData", filterData.getTime().split("_"));
-            return "filterUpdate";
+            return "filter/filterUpdate";
         } else {
-            return "filterSetting";
+            return "filter/filterSetting";
         }
     }
 

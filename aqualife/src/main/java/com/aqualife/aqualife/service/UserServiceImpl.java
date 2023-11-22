@@ -1,8 +1,8 @@
 package com.aqualife.aqualife.service;
 
 import com.aqualife.aqualife.dto.UsersDto;
+import com.aqualife.aqualife.model.Fishbowl;
 import com.aqualife.aqualife.model.Users;
-import com.aqualife.aqualife.service.UserService;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;

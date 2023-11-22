@@ -14,4 +14,8 @@ public interface FishbowlService {
 
     public boolean changeFishbowlName
             (String email, String fishbowl_beforeName, String fishbowl_afterName) throws Exception;
+
+    public boolean changeFishbowlCo2State(String email, String fishbowl, boolean co2state) throws Exception;
+
+    public boolean changeFishbowlLightState(String email, String fishbowl, boolean valueOf) throws Exception;
 }

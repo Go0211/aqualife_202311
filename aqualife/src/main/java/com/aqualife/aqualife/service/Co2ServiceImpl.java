@@ -54,11 +54,11 @@ public class Co2ServiceImpl implements Co2Service{
         ApiFuture<DocumentSnapshot> apiFuture = documentReference.get();
         DocumentSnapshot documentSnapshot = apiFuture.get();
 
-        String startTime = times.getStartHour()+""+times.getStartMinute();
-        String endTime = times.getEndHour()+""+times.getEndMinute();
+        String startTime = times.getStartHour()+"_"+times.getStartMinute();
+        String endTime = times.getEndHour()+"_"+times.getEndMinute();
 
-        Co2 changeCo2 = new Co2(Integer.parseInt(startTime),
-                Integer.parseInt(endTime),
+        Co2 changeCo2 = new Co2(startTime,
+                endTime,
                 true);
 
         Fishbowl fishbowl1 = null;
@@ -97,11 +97,11 @@ public class Co2ServiceImpl implements Co2Service{
         ApiFuture<DocumentSnapshot> apiFuture = documentReference.get();
         DocumentSnapshot documentSnapshot = apiFuture.get();
 
-        String startTime = times.getStartHour()+""+times.getStartMinute();
-        String endTime = times.getEndHour()+""+times.getEndMinute();
+        String startTime = times.getStartHour()+"_"+times.getStartMinute();
+        String endTime = times.getEndHour()+"_"+times.getEndMinute();
 
-        Co2 createCo2 = new Co2(Integer.parseInt(startTime),
-                Integer.parseInt(endTime),
+        Co2 createCo2 = new Co2(startTime,
+                endTime,
                 true);
 
         Fishbowl fishbowl1 = null;
@@ -113,7 +113,7 @@ public class Co2ServiceImpl implements Co2Service{
     }
 
     @Override
-    public void co2StateChange(String email, String fishbowl, int co2Index) throws Exception{
+    public void co2ListStateChange(String email, String fishbowl, int co2Index) throws Exception{
         String fishbowlName = email +"_" + fishbowl;
 
         Firestore firestore = FirestoreClient.getFirestore();

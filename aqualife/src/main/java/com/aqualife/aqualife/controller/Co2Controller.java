@@ -37,15 +37,26 @@ public class Co2Controller {
         }
 
         Fishbowl fishbowl = fishbowlService.getFishbowl(email, fishbowlName);
-        model.addAttribute("fishbowlCo2", fishbowl.getCo2());
+        model.addAttribute("fishbowlCo2", fishbowl.getState().get(0));
         model.addAttribute("fishbowlList", fishbowlService.getAllFishbowl(email));
 
-        return "co2Main";
+        return "co2/co2Main";
+    }
+
+    @GetMapping("co2statechange")
+    public String co2statechange(@RequestParam String co2state, HttpServletRequest httpServletRequest) throws Exception {
+        HttpSession session = httpServletRequest.getSession(true);
+        String email = (String)session.getAttribute("email");
+        String fishbowl = (String)session.getAttribute("fishbowl");
+
+        fishbowlService.changeFishbowlCo2State(email, fishbowl, Boolean.valueOf(co2state));
+
+        return "redirect:/co2Main";
     }
 
     @GetMapping("co2Create")
     public String co2Create() {
-        return "co2Create";
+        return "co2/co2Create";
     }
 
     @PostMapping("co2Create")
@@ -70,7 +81,7 @@ public class Co2Controller {
         Fishbowl fishbowlData = fishbowlService.getFishbowl(email, fishbowl);
         model.addAttribute("co2List", co2Service.getAllCo2(fishbowlData));
 
-        return "co2List";
+        return "co2/co2List";
     }
 
     @GetMapping("co2Setting")
@@ -79,7 +90,7 @@ public class Co2Controller {
         model.addAttribute("co2", co2);
         model.addAttribute("co2Index", co2Index);
 
-        return "co2Setting";
+        return "co2/co2Setting";
     }
 
     @PostMapping("co2Setting")
@@ -95,14 +106,14 @@ public class Co2Controller {
         return "redirect:/co2List";
     }
 
-    @GetMapping("co2StateChange")
-    public String co2StateChange(@RequestParam int co2Index,
+    @GetMapping("co2ListStateChange")
+    public String co2ListStateChange(@RequestParam int co2Index,
                                  HttpServletRequest httpServletRequest) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);
         String email = (String)session.getAttribute("email");
         String fishbowl = (String)session.getAttribute("fishbowl");
 
-        co2Service.co2StateChange(email, fishbowl, co2Index);
+        co2Service.co2ListStateChange(email, fishbowl, co2Index);
 
         return "redirect:/co2List";
     }

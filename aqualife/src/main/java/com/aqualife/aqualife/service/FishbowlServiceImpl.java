@@ -22,14 +22,20 @@ public class FishbowlServiceImpl implements FishbowlService {
         String naming = email + "_"+ fishbowl;
 
         List<Co2> co2List = new ArrayList<>();
-        co2List.add(new Co2(0, 0, false));
+        co2List.add(new Co2("0_0", "0_0", false));
         List<Light> lightList = new ArrayList<>();
-        lightList.add(new Light(0, 0, false));
+        lightList.add(new Light("0_0", "0_0", false));
         List<Filters> filterList = new ArrayList<>();
         filterList.add(new Filters(
                 null,
                 null,
                 -1));
+        List<Object> stateList = new ArrayList<>();
+        stateList.add(false);   //co2
+        stateList.add(false);   //filter
+        stateList.add(false);   //light
+        stateList.add(0);       //temp
+        stateList.add(0);       //ph
 
         if (getFishbowl(naming, fishbowl) == null) {
             Fishbowl fishbowl1 = Fishbowl.builder()
@@ -40,6 +46,7 @@ public class FishbowlServiceImpl implements FishbowlService {
                     .ph(new Ph(9.9, 0.0, 5.0))
                     .temperature(new Temperature(50, 50))
                     .filter(filterList)
+                    .state(stateList)
                     .build();
 
             Firestore firestore = FirestoreClient.getFirestore();
@@ -103,5 +110,49 @@ public class FishbowlServiceImpl implements FishbowlService {
         fishbowlDelete(email, fishbowl_beforeName);
 
         return true;
+    }
+
+    @Override
+    public boolean changeFishbowlCo2State(String email, String fishbowl, boolean co2state) throws Exception {
+        String fishbowlName = email +"_" + fishbowl;
+
+        Firestore firestore = FirestoreClient.getFirestore();
+        DocumentReference documentReference =
+                firestore.collection(COLLECTION_NAME).document(fishbowlName);
+        ApiFuture<DocumentSnapshot> apiFuture = documentReference.get();
+        DocumentSnapshot documentSnapshot = apiFuture.get();
+
+        Fishbowl fishbowl1 = null;
+        if (documentSnapshot.exists()) {
+            fishbowl1 = documentSnapshot.toObject(Fishbowl.class);
+            List<Object> stateList = fishbowl1.getState();
+            stateList.set(0, co2state);
+            documentReference.set(fishbowl1);
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean changeFishbowlLightState(String email, String fishbowl, boolean lightState) throws Exception {
+        String fishbowlName = email +"_" + fishbowl;
+
+        Firestore firestore = FirestoreClient.getFirestore();
+        DocumentReference documentReference =
+                firestore.collection(COLLECTION_NAME).document(fishbowlName);
+        ApiFuture<DocumentSnapshot> apiFuture = documentReference.get();
+        DocumentSnapshot documentSnapshot = apiFuture.get();
+
+        Fishbowl fishbowl1 = null;
+        if (documentSnapshot.exists()) {
+            fishbowl1 = documentSnapshot.toObject(Fishbowl.class);
+            List<Object> stateList = fishbowl1.getState();
+            stateList.set(1, lightState);
+            documentReference.set(fishbowl1);
+            return true;
+        }
+
+        return false;
     }
 }
