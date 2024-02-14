@@ -10,13 +10,13 @@ import java.time.LocalTime;
 @Setter
 @ToString
 public class Filters {
-    private String date;
+    private String day;
     private String time;
     private int filterRange;
 
     @Builder
-    public Filters(String date, String time, int filterRange) {
-        this.date = date;
+    public Filters(String day, String time, int filterRange) {
+        this.day = day;
         this.time = time;
         this.filterRange = filterRange;
     }

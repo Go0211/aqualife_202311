@@ -1,7 +1,6 @@
 package com.aqualife.aqualife.controller;
 
 import com.aqualife.aqualife.Data.Times;
-import com.aqualife.aqualife.model.Co2;
 import com.aqualife.aqualife.model.Fishbowl;
 import com.aqualife.aqualife.model.Light;
 import com.aqualife.aqualife.service.FishbowlService;
@@ -38,15 +37,16 @@ public class LightController {
         }
 
         Fishbowl fishbowl = fishbowlService.getFishbowl(email, fishbowlName);
-        model.addAttribute("fishbowlLight", fishbowl.getLight());
+//        model.addAttribute("fishbowlLight", fishbowl.getLight());
         model.addAttribute("fishbowlList", fishbowlService.getAllFishbowl(email));
+        model.addAttribute("lightList", lightService.getAllLight(fishbowl));
 
         return "light/lightMain";
     }
 
     @GetMapping("lightCreate")
     public String lightCreate() {
-        return "lightCreate";
+        return "light/lightCreate";
     }
 
     @PostMapping("lightCreate")
@@ -56,9 +56,21 @@ public class LightController {
         String email = (String)session.getAttribute("email");
         String fishbowl = (String)session.getAttribute("fishbowl");
 
+        if (times.getStartAmPm().equals("pm")) {
+            int t = Integer.parseInt(times.getStartTimeHour()) + 12;
+            times.setStartTimeHour(String.valueOf(t));
+        }
+        if (times.getEndAmPm().equals("pm")) {
+            int t = Integer.parseInt(times.getEndTimeHour()) + 12;
+            times.setEndTimeHour(String.valueOf(t));
+        }
+
+        times.setStartTime(times.getStartTimeHour()+":"+times.getStartTimeMinute());
+        times.setEndTime(times.getEndTimeHour()+":"+times.getEndTimeMinute());
+
         lightService.lightCreate(email, fishbowl, times);
 
-        return "redirect:/lightList";
+        return "redirect:/lightMain";
     }
 
     @GetMapping("lightstatechange")
@@ -72,23 +84,26 @@ public class LightController {
         return "redirect:/lightMain";
     }
 
-    @GetMapping("lightList")
-    public String lightList(HttpServletRequest httpServletRequest,
-                          Model model) throws Exception {
-        HttpSession session = httpServletRequest.getSession(true);
-        String email = (String)session.getAttribute("email");
-        String fishbowl = (String)session.getAttribute("fishbowl");
-
-        Fishbowl fishbowlData = fishbowlService.getFishbowl(email, fishbowl);
-        model.addAttribute("lightList", lightService.getAllLight(fishbowlData));
-
-        return "light/lightList";
-    }
+//    @GetMapping("lightList")
+//    public String lightList(HttpServletRequest httpServletRequest,
+//                          Model model) throws Exception {
+//        HttpSession session = httpServletRequest.getSession(true);
+//        String email = (String)session.getAttribute("email");
+//        String fishbowl = (String)session.getAttribute("fishbowl");
+//
+//        Fishbowl fishbowlData = fishbowlService.getFishbowl(email, fishbowl);
+//        model.addAttribute("lightList", lightService.getAllLight(fishbowlData));
+//
+//        return "light/lightList";
+//    }
 
     @GetMapping("lightSetting")
-    public String lightSetting(Model model, @ModelAttribute("light") Light light,
+    public String lightSetting(Model model, @RequestParam String startTime,
+                             @RequestParam String endTime, @RequestParam String state,
                              @RequestParam String lightIndex) {
-        model.addAttribute("light", light);
+        System.out.println();
+
+        model.addAttribute("light", new Light(startTime, endTime, Boolean.valueOf(state)));
         model.addAttribute("lightIndex", lightIndex);
 
         return "light/lightSetting";
@@ -102,9 +117,21 @@ public class LightController {
         String email = (String)session.getAttribute("email");
         String fishbowl = (String)session.getAttribute("fishbowl");
 
+        if (times.getStartAmPm().equals("pm")) {
+            int t = Integer.parseInt(times.getStartTimeHour()) + 12;
+            times.setStartTimeHour(String.valueOf(t));
+        }
+        if (times.getEndAmPm().equals("pm")) {
+            int t = Integer.parseInt(times.getEndTimeHour()) + 12;
+            times.setEndTimeHour(String.valueOf(t));
+        }
+
+        times.setStartTime(times.getStartTimeHour()+":"+times.getStartTimeMinute());
+        times.setEndTime(times.getEndTimeHour()+":"+times.getEndTimeMinute());
+
         lightService.lightChange(email, fishbowl, lightIndex, times);
 
-        return "redirect:/lightList";
+        return "redirect:/lightMain";
     }
 
     @GetMapping("lightStateChange")
@@ -116,7 +143,7 @@ public class LightController {
 
         lightService.lightStateChange(email, fishbowl, lightIndex);
 
-        return "redirect:/lightList";
+        return "redirect:/lightMain";
     }
 
     @GetMapping("lightDelete")
@@ -128,6 +155,6 @@ public class LightController {
 
         lightService.lightDelete(email, fishbowl, lightIndex);
 
-        return "redirect:/lightList";
+        return "redirect:/lightMain";
     }
 }

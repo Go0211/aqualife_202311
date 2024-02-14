@@ -1,121 +1,158 @@
-/*@import "Desktop/aqualife_1/aqualife/src/main/resources/static/reset.css";*/
-@import "../reset.css";
+@import "color_font.css";
 
-/* 설정 */
-.xsFont {
-  font-size: 0.8rem;
+* {
+  margin: 0;
+  font-size: 62.5%;
 }
-.sFont {
-  font-size: 1rem;
-}
-.normalFont {
-  font-size: 1.2rem;
-}
-.lFont {
-  font-size: 1.4rem;
-}
-.xlFont {
-  font-size: 1.6rem;
-}
-
-/* -html 요소- */
 
 body {
-  font-size: 62.5%;
   width: 100%;
-  height: 100%;
-  font-family: "S-CoreDream-4Regular", "맑은 고딕", "나눔고딕", dotum;
-}
-footer {
-  width: 100%;
-  height: 10vh;
-  border-bottom: 1px solid #0f0f0f;
-}
-.main_menu {
-  width: 90%;
-  height: 100%;
-  display: flex;
+  height: auto;
   margin: 0 auto;
-  justify-content: space-between;
 }
+
+/* header */
 header {
   width: 100%;
-  height: 10vh;
-  border-bottom: 1px solid #0f0f0f;
+  height: 8vh;
+  box-sizing: border-box;
+  margin-bottom: 3%;
 }
-.navbar_menu {
-  width: 90%;
+header #menuFrame {
+  width: 100%;
   height: 100%;
-  display: flex;
   margin: 0 auto;
-  justify-content: space-between;
+  display: flex;
 }
-.navbar_menu li {
+header #menuFrame #menuIcon {
   width: auto;
   height: 100%;
-  line-height: 10vh;
 }
-.navbar_menu li img {
-  height: 100%;
+header #menuFrame #menuIcon img {
   width: auto;
+  height: 100%;
+  padding: 30%;
+  box-sizing: border-box;
 }
+header #fishbowlInfoFrame {
+  width: 50%;
+  height: auto;
+}
+header #fishbowlInfoFrame .fishbowlInfoInnerFrame {
+  width: 100%;
+  height: auto;
+}
+header #fishbowlInfoFrame .fishbowlInfoInnerFrame #fishowlTitle {
+  width: 100%;
+  height: 50%;
+  padding-top: 3%;
+  box-sizing: border-box;
+  color: var(--mainFontColor);
+}
+header #fishbowlInfoFrame .fishbowlInfoInnerFrame #fishbowlInfo {
+  width: 100%;
+  height: 50%;
+  padding-bottom: 3%;
+  box-sizing: border-box;
+  color: var(--subFontColor);
+}
+header #fishbowlArrow {
+  width: auto;
+  height: 100%;
+}
+header #fishbowlArrow img {
+  width: auto;
+  height: 100%;
+  padding: 30%;
+  box-sizing: border-box;
+}
+
+/* main */
 
 main {
   width: 100%;
-  height: 80vh;
+  height: auto;
+}
+main #FunctionIcon {
+  width: 100%;
+  height: 8vh;
+  margin-bottom: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+main #FunctionIcon .swiper-slide {
+  width: auto;
+  height: 100%;
+  border-radius: 30%;
+  background-color: var(--subColor);
+  box-sizing: border-box;
+}
+main #FunctionIcon .swiper-slide img {
+  width: auto;
+  height: 100%;
+  padding: 30%;
+  box-sizing: border-box;
+  filter: invert(100%) sepia(0%) saturate(7446%) hue-rotate(149deg)
+    brightness(96%) contrast(112%);
+}
+main #FunctionIcon .select {
+  background-color: var(--mainColor);
 }
 
-.fishbowlFrame {
-  width: 50%;
-  height: 50vh;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-size: cover;
-}
-#co2Click {
-  position: absolute;
-  width: 10vw;
-  height: 10vw;
-  left: 10%;
-  top: 10%;
-  text-align: center;
-}
-#filterClick {
-  position: absolute;
-  width: 10vw;
-  height: 10vw;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-#phClick {
-  position: absolute;
-  width: 10vw;
-  height: 10vw;
-  right: 10%;
-  top: 10%;
-  text-align: center;
-}
-#tempClick {
-  position: absolute;
-  width: 10vw;
-  height: 10vw;
-  left: 10%;
-  bottom: 10%;
-  text-align: center;
-}
-#lightClick {
-  position: absolute;
-  width: 10vw;
-  height: 10vw;
-  right: 10%;
-  bottom: 10%;
-  text-align: center;
-}
-.clickIcon {
+main #fishbowlImg {
   width: 100%;
+  height: 40vh;
+  background-color: #43c6bb;
+  margin-bottom: 5%;
+}
+
+main #orderList {
+  width: 100%;
+  height: auto;
+  border-bottom: #595959;
+}
+main #orderList #orderItem {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  margin-bottom: 3%;
+}
+main #orderList #orderItem #colorBox {
+  width: auto;
   height: 100%;
+  margin-right: 5%;
+  padding: 2%;
+  box-sizing: border-box;
+}
+main #orderList #orderItem #colorBox #boxFrame {
+  width: auto;
+  height: 100%;
+  background-color: #e9f5ef;
+  border-radius: 30%;
+}
+main #orderList #orderItem #colorBox #boxFrame img {
+  width: auto;
+  height: 100%;
+  padding: 10%;
+  box-sizing: border-box;
+  filter: invert(59%) sepia(12%) saturate(1688%) hue-rotate(99deg)
+    brightness(101%) contrast(94%);
+}
+main #orderList #orderItem #orderSection {
+  width: 80%;
+  height: 100%;
+}
+main #orderList #orderItem #orderSection #orderState {
+  width: 100%;
+  height: 50%;
+  padding-top: 2%;
+  box-sizing: border-box;
+}
+main #orderList #orderItem #orderSection #orderStateDetail {
+  width: 100%;
+  height: 50%;
+  padding-bottom: 2%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #aaa;
+  color: var(--subFontColor);
 }

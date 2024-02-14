@@ -31,8 +31,7 @@ public class FilterController {
 
     @GetMapping("filterSetting")
     public String filterSetting(@RequestParam String dayId,
-                                Model model,
-                                HttpServletRequest httpServletRequest) throws Exception {
+                                Model model, HttpServletRequest httpServletRequest) throws Exception {
         HttpSession session = httpServletRequest.getSession();
         String email = (String)session.getAttribute("email");
         String fishbowl = (String)session.getAttribute("fishbowl");
@@ -42,10 +41,10 @@ public class FilterController {
 
         model.addAttribute("dayId", dayId);
 
-        Filters filterData = filterService.getFilter(fishbowlService.getFishbowl(email, fishbowl), dayId);
+        Filters filterData = filterService.getFilter(fishbowlService.getFishbowl(email, fishbowl));
 
         if (filterData != null) {
-            model.addAttribute("filterData", filterData.getTime().split("_"));
+            model.addAttribute("filterData", filterData);
             return "filter/filterUpdate";
         } else {
             return "filter/filterSetting";
@@ -53,35 +52,34 @@ public class FilterController {
     }
 
     @PostMapping("filterSetting")
-    public String filterSetting(@RequestParam String startHour,
-                                @RequestParam String startMinute,
+    public String filterSetting(@RequestParam String time,
                                 @RequestParam String filterRange,
-                                @RequestParam String dayId,
+                                @RequestParam String day,
                                 HttpServletRequest httpServletRequest) throws Exception {
         HttpSession session = httpServletRequest.getSession();
         String email = (String)session.getAttribute("email");
         String fishbowl = (String)session.getAttribute("fishbowl");
 
-//        String[] strings = dayId.split("_");
+        int dayDecimalCode = Integer.parseInt(day);
+        System.out.println(time);
 
-        filterService.filterSetting(email, fishbowl, dayId, startHour+"_"+startMinute, Integer.parseInt(filterRange));
+        filterService.filterSetting(email, fishbowl, dayDecimalCode, time ,Integer.parseInt(filterRange));
 
         return "redirect:/filterMain";
     }
 
     @PostMapping("filterUpdate")
-    public String filterUpdate(@RequestParam String startHour,
-                               @RequestParam String startMinute,
+    public String filterUpdate(@RequestParam String time,
                                @RequestParam String filterRange,
-                               @RequestParam String dayId,
+                               @RequestParam String day,
                                 HttpServletRequest httpServletRequest) throws Exception {
         HttpSession session = httpServletRequest.getSession();
         String email = (String)session.getAttribute("email");
         String fishbowl = (String)session.getAttribute("fishbowl");
 
-//        String[] strings = dayId.split("_");
+        int dayDecimalCode = Integer.parseInt(day);
 
-        filterService.filterUpdate(email, fishbowl, dayId, startHour, startMinute, Integer.parseInt(filterRange));
+        filterService.filterUpdate(email, fishbowl, dayDecimalCode, time, Integer.parseInt(filterRange));
 
         return "redirect:/filterMain";
     }

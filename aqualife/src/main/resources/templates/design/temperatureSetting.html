@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{user/temperatureSetting.css}">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div id="cancelFrame">
+            <button>
+                <img th:src="@{image/x아이콘.png}" alt="x">
+            </button>
+        </div>
+        <form th:action="@{/temperatureSetting}" method="post">
+            <div id="settingFrame">
+                <div id="minusTemp" class="settingBtn font_xl">
+                    <img th:src="@{image/minus아이콘.png}" alt="minus아이콘">
+                </div>
+                <input type="text" id="settingTemp" name="tempStay" value="50" class="font_l"></input>
+                <div id="plusTemp" class="settingBtn font_xl">
+                    <img th:src="@{image/plus아이콘.png}" alt="plus아이콘">
+                </div>
+            </div>
+            <div id="dataTemp">
+                NOW Temp : 현재온도 ˚C
+            </div>
+            <button type="submit" id="saveBtn" class="font_base">
+                Save
+            </button>
+        </form>
+    </main>
+</body>
+
+<script th:src="@{js/temperatureSetting.js}"></script>
+
+</html>

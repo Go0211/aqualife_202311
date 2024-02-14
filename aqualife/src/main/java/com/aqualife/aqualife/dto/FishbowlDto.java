@@ -18,13 +18,13 @@ public class FishbowlDto {
     private List<Light> light;
     private Ph ph;
     private Temperature temperature;
-    private List<Filters> filter;
+    private Filters filter;
     private List<Object> state;
 
     @Builder
     public FishbowlDto(String email, String fishbowl, List<Co2> co2,
                        List<Light> light, Ph ph, Temperature temperature,
-                       List<Filters> filter, List<Object> state) {
+                       Filters filter, List<Object> state) {
         this.email = email;
         this.fishbowl = fishbowl;
         this.co2 = co2;

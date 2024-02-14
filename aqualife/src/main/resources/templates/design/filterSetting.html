@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="filterSetting.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div id="cancelFrame">
+            <button>
+                <img src="../image/x아이콘.png" alt="x">
+            </button>
+        </div>
+        <p class="borderLine"></p>
+        <table id="timeTable">
+            <tr id="topSection">
+                <td id="hourUp">
+                    <img src="../image/arrow.png" alt="위화살표">
+                </td>
+                <td></td>
+                <td id="minuteUp">
+                    <img src="../image/arrow.png" alt="위화살표">
+                </td>
+                <td></td>
+                <td rowspan="3"></td>
+                <td rowspan="3" id="filterRangeFrame">
+                    <div class="waterPercent" id="percent100">100%</div>
+                    <div class="waterPercent" id="percent75">75%</div>
+                    <div class="waterPercent" id="percent50">50%</div>
+                    <div class="waterPercent" id="percent25">25%</div>
+                </td>
+            </tr>
+            <tr id="middleSection">
+                <td>
+                    <input type="text" id="hourNum" value="0">
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <input type="text" id="minuteNum" value="0">
+                </td>
+                <td>
+                    <button id="chooseAMPM" type="button">am</button>
+                </td>
+            </tr>
+            <tr id="bottomSection">
+                <td id="hourDown">
+                    <img src="../image/arrow.png" alt="아래화살표">
+                </td>
+                <td></td>
+                <td id="minuteDown">
+                    <img src="../image/arrow.png" alt="아래화살표">
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <input type="hidden" id="dateValue" name="day">
+        <p class="borderLine" style="margin-bottom: 3vh;"></p>
+        <div id="chooseWeek">
+            <button id="sun">Sun</button>
+            <button id="mon">Mon</button>
+            <button id="tue">Tue</button>
+            <button id="wed">Wed</button>
+            <button id="thu">Thu</button>
+            <button id="fri">Fri</button>
+            <button id="sat">Sat</button>
+        </div>
+        <input type="hidden" id="filterRange">
+        <div id="saveFrame">
+            <button>save</button>
+        </div>
+    </main>
+</body>
+
+<script src="filterSetting.js"></script>
+
+</html>

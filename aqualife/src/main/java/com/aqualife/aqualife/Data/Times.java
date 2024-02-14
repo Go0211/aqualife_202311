@@ -4,8 +4,12 @@ import lombok.Data;
 
 @Data
 public class Times {
-    private int startHour;
-    private int startMinute;
-    private int endHour;
-    private int endMinute;
+    private String startTime;
+    private String startTimeHour;
+    private String startTimeMinute;
+    private String startAmPm;
+    private String endTime;
+    private String endTimeHour;
+    private String endTimeMinute;
+    private String endAmPm;
 }

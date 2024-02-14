@@ -42,7 +42,7 @@ public class PhController {
         model.addAttribute("fishbowlPh", fishbowl.getPh());
         model.addAttribute("fishbowlList", fishbowlService.getAllFishbowl(email));
 
-        return "ph/phMain";
+        return "design/phMain";
     }
 
     @GetMapping("phSetting")
@@ -62,7 +62,7 @@ public class PhController {
         model.addAttribute("phSetting", phService.getPh(email, fishbowl));
         model.addAttribute("value", list);
 
-        return "ph/phSetting";
+        return "design/phSetting";
     }
     @PostMapping("phSetting")
     public String phSetting(@ModelAttribute("phSetting") Ph ph,

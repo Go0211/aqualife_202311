@@ -1,31 +1,105 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{user/lightSetting.css}">
+    <title>Document</title>
 </head>
+
 <body>
-<form th:action="@{/lightCreate}" method="post" th:object="${lightTime}">
-    <select name="startHour" id="startHour">
-        <option value="">--Start Hour--</option>
-        <option th:each="number : ${#numbers.sequence(0,23)}" th:text="${number}" th:value="${number}"></option>
-    </select>
-    :
-    <select name="startMinute" id="startMinute">
-        <option value="">--Start Minute--</option>
-        <option th:each="number : ${#numbers.sequence(0,59)}" th:text="${number}" th:value="${number}"></option>
-    </select>
-    <br>
-    <select name="endHour" id="endHour">
-        <option value="">--End Hour--</option>
-        <option th:each="number : ${#numbers.sequence(0,23)}" th:text="${number}" th:value="${number}"></option>
-    </select>
-    :
-    <select name="endMinute" id="endMinute">
-        <option value="">--End Minute--</option>
-        <option th:each="number : ${#numbers.sequence(0,59)}" th:text="${number}" th:value="${number}"></option>
-    </select>
-    <button type="submit">저장</button>
-</form>
+<main>
+    <form th:action="@{/lightCreate}" method="post" th:object="${lightTime}">
+        <div id="cancelFrame">
+            <a th:href="@{/lightMain}">
+                <img src="../image/x아이콘.png" alt="x">
+            </a>
+        </div>
+        <p class="borderLine"></p>
+        <table class="timeTable">
+            <tr class="topSection">
+                <td id="startHourUp">
+                    <img src="../image/arrow.png" alt="위화살표">
+                </td>
+                <td></td>
+                <td id="startMinuteUp">
+                    <img src="../image/arrow.png" alt="위화살표">
+                </td>
+                <td></td>
+            </tr>
+            <tr class="middleSection">
+                <td>
+                    <input type="text" id="startHourNum" name="startTimeHour" value="0">
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <input type="text" id="startMinuteNum" name="startTimeMinute" value="0">
+                </td>
+                <td>
+                    <input id="startTimeHidden" type="hidden" name="startAmPm" value = "am">
+                    <button type="button" id="startAMPM">am</button>
+                </td>
+            </tr>
+            <tr class="bottomSection">
+                <td id="startHourDown">
+                    <img src="../image/arrow.png" alt="아래화살표">
+                </td>
+                <td></td>
+                <td id="startMinuteDown">
+                    <img src="../image/arrow.png" alt="아래화살표">
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <table class="timeTable">
+            <tr class="topSection">
+                <td id="endHourUp">
+                    <img src="../image/arrow.png" alt="위화살표">
+                </td>
+                <td></td>
+                <td id="endMinuteUp">
+                    <img src="../image/arrow.png" alt="위화살표">
+                </td>
+                <td></td>
+            </tr>
+            <tr class="middleSection">
+                <td>
+                    <input type="text" id="endHourNum" name="endTimeHour" value="0">
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <input type="text" id="endMinuteNum" name="endTimeMinute" value="0">
+                </td>
+                <td>
+                    <input id="endTimeHidden" type="hidden" name="endAmPm" value="am">
+                    <button  type="button"  id="endAMPM">am</button>
+                </td>
+            </tr>
+            <tr class="bottomSection">
+                <td id="endHourDown">
+                    <img src="../image/arrow.png" alt="아래화살표">
+                </td>
+                <td></td>
+                <td id="endMinuteDown">
+                    <img src="../image/arrow.png" alt="아래화살표">
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <p class="borderLine" style="margin-bottom: 3vh;"></p>
+        <div id="saveFrame">
+            <button type="submit">save</button>
+        </div>
+    </form>
+</main>
 </body>
+
+<script type="text/javascript" th:src="@{/js/co2LightSetting.js}"></script>
+
+
 </html>

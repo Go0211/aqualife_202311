@@ -1,0 +1,98 @@
+.chart-skills {
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+  position: relative;
+  width: 350px;
+  height: 175px;
+}
+.chart-skills *,
+.chart-skills::before {
+  box-sizing: border-box;
+}
+
+.chart-skills::before {
+  position: absolute;
+  content: "";
+  width: inherit;
+  height: inherit;
+  border-bottom: none;
+  border-top-left-radius: 175px;
+  border-top-right-radius: 175px;
+}
+
+.chart-skills li {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  border: 45px solid;
+  border-top: none;
+  border-bottom-left-radius: 175px;
+  border-bottom-right-radius: 175px;
+  transform-origin: 50% 0;
+}
+
+.chart-skills li:nth-child(1) {
+  z-index: 4;
+  border-color: green;
+  animation: chartAni1 2s linear 1 forwards;
+}
+
+.chart-skills li:nth-child(2) {
+  z-index: 3;
+  border-color: firebrick;
+  animation: chartAni2 2s linear 1 forwards;
+}
+
+.chart-skills li:nth-child(3) {
+  z-index: 2;
+  border-color: steelblue;
+  animation: chartAni3 2s linear 1 forwards;
+}
+
+span {
+  display: none;
+}
+
+@keyframes chartAni1 {
+  0% {
+    transform: rotateZ(0);
+  }
+  26% {
+    transform: rotateZ(30deg);
+  }
+  100% {
+    transform: rotateZ(60deg);
+  }
+}
+@keyframes chartAni2 {
+  0% {
+    transform: rotateZ(0);
+  }
+  26% {
+    transform: rotateZ(40deg);
+  }
+  30% {
+    transform: rotateZ(50deg);
+  }
+  100% {
+    transform: rotateZ(120deg);
+  }
+}
+@keyframes chartAni3 {
+  0% {
+    transform: rotateZ(0);
+  }
+  30% {
+    transform: rotateZ(50deg);
+  }
+  60% {
+    transform: rotateZ(90deg);
+  }
+  100% {
+    transform: rotateZ(180deg);
+  }
+}

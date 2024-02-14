@@ -1,0 +1,125 @@
+@import "color_font.css";
+
+* {
+  margin: 0;
+  font-size: 62.5%;
+}
+
+body {
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+  color: var(--mainFontColor);
+}
+.mainColor {
+  color: var(--mainColor);
+}
+
+/* header */
+header {
+  width: 100%;
+  height: 10vh;
+  box-sizing: border-box;
+  margin-bottom: 3%;
+}
+header #menuFrame {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+header #menuFrame #menuIcon {
+  width: auto;
+  height: 100%;
+}
+header #menuFrame #menuIcon img {
+  width: auto;
+  height: 100%;
+  padding: 30%;
+  box-sizing: border-box;
+}
+header #fishbowlInfoFrame {
+  width: 50%;
+  height: auto;
+}
+header #fishbowlInfoFrame #fishowlTitle {
+  width: 100%;
+  height: 50%;
+  padding-top: 3%;
+  box-sizing: border-box;
+  color: var(--mainFontColor);
+}
+header #fishbowlInfoFrame #fishbowlInfo {
+  width: 100%;
+  height: 50%;
+  padding-bottom: 3%;
+  box-sizing: border-box;
+  color: var(--subFontColor);
+}
+header #fishbowlArrow {
+  width: auto;
+  height: 100%;
+}
+header #fishbowlArrow img {
+  width: auto;
+  height: 100%;
+  padding: 30%;
+  box-sizing: border-box;
+}
+
+/* main */
+
+main {
+  width: 100%;
+  height: auto;
+}
+main #FunctionIcon {
+  width: 100%;
+  height: 8vh;
+  margin-bottom: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+main #FunctionIcon .swiper-slide {
+  width: auto;
+  height: 100%;
+  border-radius: 30%;
+  background-color: var(--subColor);
+  box-sizing: border-box;
+}
+main #FunctionIcon .swiper-slide img {
+  width: auto;
+  height: 100%;
+  padding: 30%;
+  box-sizing: border-box;
+  filter: invert(100%) sepia(0%) saturate(7446%) hue-rotate(149deg)
+    brightness(96%) contrast(112%);
+}
+main #FunctionIcon .select {
+  background-color: var(--mainColor);
+}
+
+main #fishbowlImg {
+  width: 100%;
+  height: 40vh;
+  background-color: #43c6bb;
+}
+
+main #chartFrame {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+main #chartFrame #nowValue1 {
+  width: 100%;
+  height: auto;
+  margin: 3vh 0;
+}
+main #chartFrame #valueFrame {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+main #chartFrame #titleFrame {
+  color: var(--subFontColor);
+}

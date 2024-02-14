@@ -22,18 +22,14 @@ public class FishbowlServiceImpl implements FishbowlService {
         String naming = email + "_"+ fishbowl;
 
         List<Co2> co2List = new ArrayList<>();
-        co2List.add(new Co2("0_0", "0_0", false));
+        co2List.add(new Co2("0:0", "0:0", false));
         List<Light> lightList = new ArrayList<>();
-        lightList.add(new Light("0_0", "0_0", false));
-        List<Filters> filterList = new ArrayList<>();
-        filterList.add(new Filters(
-                null,
-                null,
-                -1));
+        lightList.add(new Light("0:0", "0:0", false));
+        Filters filters = new Filters("0000000", "0", 0);
         List<Object> stateList = new ArrayList<>();
         stateList.add(false);   //co2
-        stateList.add(false);   //filter
         stateList.add(false);   //light
+        stateList.add(0);   //filter
         stateList.add(0);       //temp
         stateList.add(0);       //ph
 
@@ -45,7 +41,7 @@ public class FishbowlServiceImpl implements FishbowlService {
                     .light(lightList)
                     .ph(new Ph(9.9, 0.0, 5.0))
                     .temperature(new Temperature(50, 50))
-                    .filter(filterList)
+                    .filter(filters)
                     .state(stateList)
                     .build();
 

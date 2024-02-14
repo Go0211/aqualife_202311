@@ -41,10 +41,10 @@ public class TemperatureController {
         }
 
         Fishbowl fishbowl = fishbowlService.getFishbowl(email, fishbowlName);
-        model.addAttribute("fishbowlTemperature", fishbowl.getTemperature());
+        model.addAttribute("temperature", fishbowl.getTemperature());
         model.addAttribute("fishbowlList", fishbowlService.getAllFishbowl(email));
 
-        return "temperature/temperatureMain";
+        return "design/temperatureMain";
     }
 
     @GetMapping("temperatureSetting")
@@ -58,7 +58,7 @@ public class TemperatureController {
         model.addAttribute("temperatureSetting",
                 temperatureService.getTemperature(email, fishbowl));
 
-        return "temperature/temperatureSetting";
+        return "design/temperatureSetting";
     }
 
     @PostMapping("temperatureSetting")

@@ -1,21 +1,113 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--    <link rel="stylesheet" href="co2Main.css">-->
+    <link rel="stylesheet" type="text/css" th:href="@{user/co2Main.css}">
+    <title>Document</title>
+    <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />-->
+    <!--    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>-->
 </head>
-<body>
-image
-value : <span th:text="${fishbowlCo2}"></span>
-<button type="button" th:onclick="|location.href='@{/co2statechange(co2state=true)}'|">on</button>
-<button type="button" th:onclick="|location.href='@{/co2statechange(co2state=false)}'|">off</button>
-<a th:href="@{/co2List}">list</a>
 
-<div th:each="fbList : ${fishbowlList}">
-    <a th:href="@{/co2Main(f_name=${fbList.getFishbowl()})}">
-        <span th:text="${fbList.getEmail()}"></span>
-        <span th:text="${fbList.getFishbowl()}"></span>
-    </a>
-</div>
+<body>
+<header>
+    <div id="menuFrame">
+        <div id="menuIcon">
+            <img th:src="@{image/h.png}" alt="햄버거">
+        </div>
+        <div id="fishbowlInfoFrame">
+            <div id="fishowlTitle" class="font_base">
+                <span th:text="${fishbowlList.get(0).getFishbowl()}"></span>
+            </div>
+            <!--                <div id="fishbowlInfo" class="font_s">-->
+            <!--                    날짜, 시리얼넘버?-->
+            <!--                </div>-->
+        </div>
+        <div id="fishbowlArrow">
+            <img src="../image/downArrow.png" alt="아래화살표">
+        </div>
+    </div>
+</header>
+<main>
+    <div class="swiper mySwiper">
+        <div id="FunctionIcon" class="swiper-wrapper">
+            <div id="home" class="swiper-slide select">
+                <img th:src="@{image/home아이콘.png}" alt="집">
+            </div>
+            <div id="water" class="swiper-slide">
+                <img th:src="@{image/filter아이콘.png}" alt="환수">
+            </div>
+            <div id="light" class="swiper-slide">
+                <img th:src="@{image/light아이콘.png}" alt="빛">
+            </div>
+            <div id="co2" class="swiper-slide">
+                <img th:src="@{image/co2아이콘.png}" alt="co2">
+            </div>
+            <div id="ph" class="swiper-slide">
+                <img th:src="@{image/ph아이콘.png}" alt="ph">
+            </div>
+            <div id="temp" class="swiper-slide">
+                <img th:src="@{image/temp아이콘.png}" alt="temp">
+            </div>
+        </div>
+    </div>
+    <div id="fishbowlImg">
+        어항 이미지
+        <!-- <img src="" alt=""> -->
+    </div>
+    <div id="co2List">
+        <div id="co2Add">
+            <a th:href="@{/co2Create}">Add +</a>
+        </div>
+        <div id="co2Item" th:each="list : ${co2List}">
+            <div id="colorBox">
+                <div id="boxFrame">
+                    <img th:src="@{image/dot아이콘.png}" alt="점">
+                </div>
+            </div>
+            <div id="orderSection">
+                <!--                <div class="orderList">-->
+                <a th:href="@{/co2Setting(startTime=${list.startTime}, endTime=${list.endTime},
+                                    state=${list.state} , co2Index=${listStat.index})}">
+                    <div id="orderState" class="font_base">
+                        <span th:text="${list.startTime}"></span>
+                    </div>
+                    <!--                        <div id="orderStateDetail" class="font_s">-->
+                    <!--                            <img th:src="@{/image/downArrow.png}" alt="오른쪽 화살표">-->
+                    <!--                        </div>-->
+                </a>
+
+                <div id="powerFrame">
+                    <div class="powerOuter" th:if="${list.state == false}">
+                        <div class="btnFalse"
+                             th:onclick="|location.href='@{/co2ListStateChangeMain(co2Index=${listStat.index})}'|">
+                            <img src="../image/power아이콘.png" alt="전원">
+                        </div>
+                    </div>
+                    <div class="powerOuter" th:if="${list.state == true}">
+                        <div class="btnTrue"
+                             th:onclick="|location.href='@{/co2ListStateChangeMain(co2Index=${listStat.index})}'|">
+                            <img src="../image/power아이콘.png" alt="전원">
+                        </div>
+                    </div>
+                </div>
+                <!--                </div>-->
+            </div>
+        </div>
+    </div>
+</main>
 </body>
+
+<script th:src="@{js/public.js}"></script>
+
+<script>
+    // var swiper = new Swiper(".mySwiper", {
+    //     slidesPerView: 4,
+    //     spaceBetween: 60,
+    //     freeMode: true,
+    // })
+</script>
+
 </html>

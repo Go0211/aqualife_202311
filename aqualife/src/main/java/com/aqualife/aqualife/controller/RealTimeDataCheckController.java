@@ -21,11 +21,8 @@ public class RealTimeDataCheckController {
     public String realTimeDataCheck(HttpServletRequest httpServletRequest) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);
 
-        List<String> co2FishbowlArr = (List<String>)session.getAttribute("co2Fishbowl");
-        List<String> lightFishbowlArr = (List<String>)session.getAttribute("lightFishbowl");
-        session.setAttribute("co2Fishbowl", realTimeDataCheckService.checkCo2Data(co2FishbowlArr));
-        session.setAttribute("lightFishbowl", realTimeDataCheckService.checkLightData(lightFishbowlArr));
-
+        realTimeDataCheckService.checkCo2Data();
+        realTimeDataCheckService.checkLightData();
         realTimeDataCheckService.checkFilterData();
         realTimeDataCheckService.checkTemperatureData();
         realTimeDataCheckService.checkPhData();

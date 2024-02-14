@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="join.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="main" action="#" method="post">
+        <div id="back">
+            <div id="backFrame">
+                <img src="../image/delete아이콘.png" alt="왼쪽 화살표">
+            </div>
+        </div>
+        <div id="title" class="font_xxxxl">
+            Create account
+        </div>
+        <div id="nameFrame" class="sectionFrame">
+            <div class="sectionTitle font_xl">Your name</div>
+            <input id="name" class="sectionInput" name="name" type="text" placeholder="First and last name">
+        </div>
+        <div class="errorString">
+            이름을 입력해주세요
+        </div>
+        <div id="emailFrame" class="sectionFrame">
+            <div class="sectionTitle font_l">email</div>
+            <input id="email" class="sectionInput" name="email" type="text" placeholder="email">
+        </div>
+        <div class="errorString">
+            이메일을 입력해주세요
+        </div>
+        <div id="passwordFrame" class="sectionFrame">
+            <div class="sectionTitle font_l">Password</div>
+            <input id="password" class="sectionInput" name="password" type="password" placeholder="email">
+        </div>
+        <div class="errorString">
+            비밀번호를 입력해주세요
+        </div>
+        <div id="rePasswordFrame" class="sectionFrame">
+            <div class="sectionTitle font_l">Re-enter password</div>
+            <input id="rePassword" class="sectionInput" name="rePassword" type="password">
+        </div>
+        <div class="errorString">
+            같은 비밀번호를 입력해주세요
+        </div>
+        <div id="phoneFrame" class="sectionFrame">
+            <div class="sectionTitle font_l">Mobile Number</div>
+            <div id="phoneBackground" class="sectionInput">
+                <input type="number" id="phone1" name="phone1">
+                -
+                <input type="number" id="phone2" name="phone2">
+                -
+                <input type="number" id="phone3" name="phone3">
+            </div>
+        </div>
+        <div class="errorString">
+            전화번호를 입력해주세요
+        </div>
+        <div id="continueFrame">
+            <button id="continueBtn" type="submit">Continue</button>
+        </div>
+    </form>
+</body>
+
+</html>

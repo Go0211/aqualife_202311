@@ -5,28 +5,143 @@
     <title>Setting</title>
 </head>
 <script>
-    function handleOnInput(el, maxlength) {
-        if(el.value.length > maxlength)  {
-            el.value
-                = el.value.substr(0, maxlength);
+    function daySetting(dayCode) {
+        var dateValue = document.getElementById("dateValue");
+        var mon = document.getElementById("mon");
+        var tue = document.getElementById("tue");
+        var wed = document.getElementById("wed");
+        var thu = document.getElementById("thu");
+        var fri = document.getElementById("fri");
+        var sat = document.getElementById("sat");
+        var sun = document.getElementById("sun");
+        var settingTime = document.getElementById("settingTime");
+
+        if (dayCode == "월") {
+            if (mon.className != "choose") {
+                dateValue.value = 64 + Number(dateValue.value);
+                mon.className = "choose";
+            } else {
+                dateValue.value = Number(dateValue.value) - 64;
+                mon.className = "";
+            }
+        } else if (dayCode == "화") {
+            if (tue.className != "choose") {
+                dateValue.value = 32 + Number(dateValue.value);
+                tue.className = "choose";
+            } else {
+                dateValue.value = Number(dateValue.value) - 32;
+                tue.className = "";
+            }
+        } else if (dayCode == "수") {
+            if (wed.className != "choose") {
+                dateValue.value = 16 + Number(dateValue.value);
+                wed.className = "choose";
+            } else {
+                dateValue.value = Number(dateValue.value) - 16;
+                wed.className = "";
+            }
+        } else if (dayCode == "목") {
+            if (thu.className != "choose") {
+                dateValue.value = 8 + Number(dateValue.value);
+                thu.className = "choose";
+            } else {
+                dateValue.value = Number(dateValue.value) - 8;
+                thu.className = "";
+            }
+        } else if (dayCode == "금") {
+            if (fri.className != "choose") {
+                dateValue.value = 4 + Number(dateValue.value);
+                fri.className = "choose";
+            } else {
+                dateValue.value = Number(dateValue.value) - 4;
+                fri.className = "";
+            }
+        } else if (dayCode == "토") {
+            if (sat.className != "choose") {
+                dateValue.value = 2 + Number(dateValue.value);
+                sat.className = "choose";
+            } else {
+                dateValue.value = Number(dateValue.value) - 2;
+                sat.className = "";
+            }
+        } else if (dayCode == "일") {
+            if (sun.className != "choose") {
+                dateValue.value = 1 + Number(dateValue.value);
+                sun.className = "choose";
+            } else {
+                dateValue.value = Number(dateValue.value) - 1;
+                sun.className = "";
+            }
+        }
+
+        console.log(dateValue.value);
+    }
+
+    function filterSize(size) {
+        var size1 = document.getElementById('size1');
+        var size2 = document.getElementById('size2');
+        var size3 = document.getElementById('size3');
+        var size4 = document.getElementById('size4');
+        var filterRange = document.getElementById("filterRange");
+
+        if (size == 1) {
+            filterRange.value = "1"
+            size1.className = 'choose'
+            size2.className = ''
+            size3.className = ''
+            size4.className = ''
+        } else if (size == 2) {
+            filterRange.value = "2"
+            size1.className = 'choose'
+            size2.className = 'choose'
+            size3.className = ''
+            size4.className = ''
+        } else if (size == 3) {
+            filterRange.value = "3"
+            size1.className = 'choose'
+            size2.className = 'choose'
+            size3.className = 'choose'
+            size4.className = ''
+        } else if (size == 4) {
+            filterRange.value = "4"
+            size1.className = 'choose'
+            size2.className = 'choose'
+            size3.className = 'choose'
+            size4.className = 'choose'
         }
     }
 </script>
-
+<style>
+    .choose {
+        background-color: #3E85EF;
+    }
+</style>
 <body>
 <form th:action="@{/filterSetting}" method="post">
-    <input type="hidden" name="dayId" th:value="${dayId}">
-    <select name="startHour" id="startHour" >
-        <option value="">--Start Hour--</option>
-        <option th:each="number : ${#numbers.sequence(0,23)}" th:text="${number}" th:value="${number}"></option>
-    </select>
-    <select name="startMinute" id="startMinute">
-        <option value="">--Start Minute--</option>
-        <option th:each="number : ${#numbers.sequence(0,59)}" th:text="${number}" th:value="${number}"></option>
-    </select>
+    <button id="mon" type="button" onclick="daySetting('월')">월</button>
+    <button id="tue" type="button" onclick="daySetting('화')">화</button>
+    <button id="wed" type="button" onclick="daySetting('수')">수</button>
+    <button id="thu" type="button" onclick="daySetting('목')">목</button>
+    <button id="fri" type="button" onclick="daySetting('금')">금</button>
+    <button id="sat" type="button" onclick="daySetting('토')">토</button>
+    <button id="sun" type="button" onclick="daySetting('일')">일</button>
+    <input type="hidden" id="dateValue" name="day">
+    <input id="settingTime" type="time" name="time">
+    <span id="size1" onclick="filterSize(1)">
+        1
+    </span>
+    <span id="size2" onclick="filterSize(2)">
+        2
+    </span>
+    <span id="size3" onclick="filterSize(3)">
+        3
+    </span>
+    <span id="size4" onclick="filterSize(4)">
+        4
+    </span>
     <input
-            type='number'
-            oninput='handleOnInput(this, 1)'
+            id="filterRange"
+            type='hidden'
             name="filterRange"
     />
     <button type="submit">설정</button>

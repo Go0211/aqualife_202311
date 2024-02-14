@@ -8,12 +8,10 @@ import java.time.LocalTime;
 import java.util.List;
 
 public interface FilterService {
-    public void filterSetting(String email, String fishbowl, String localDate, String localTime, int filterRange) throws Exception;
+    public void filterSetting(String email, String fishbowl, int dayDecimalCode, String time, int filterRange) throws Exception;
 
-    public void filterUpdate(String email, String fishbowl, String dayId,
-                             String startHour, String startMinute, int filterRange) throws Exception;
+    public void filterUpdate(String email, String fishbowl, int dayDecimalCode,
+                             String time, int filterRange) throws Exception;
 
-    Filters getFilter(Fishbowl fishbowl, String dayId);
-
-    public List<Filters> getAllFilter(Fishbowl fishbowlData) throws Exception;
+    Filters getFilter(Fishbowl fishbowl);
 }

@@ -1,0 +1,35 @@
+/* color */
+:root {
+  --mainColor: #6863f2;
+  --subColor: #f8f8fa;
+  --mainFontColor: #18172b;
+  --subFontColor: #6a7ea6;
+}
+
+/* font */
+.font_xs {
+  font-size: 1rem;
+}
+.font_s {
+  font-size: 1.2rem;
+}
+.font_base {
+  font-size: 1.4rem;
+}
+.font_l {
+  font-size: 1.6rem;
+}
+.font_xl {
+  font-size: 1.8rem;
+}
+.font_xxl {
+  font-size: 2rem;
+}
+.font_xxxl {
+  font-size: 2.2rem;
+}
+.font_xxxxl {
+  font-size: 2.4rem;
+}
+
+/* public css */

@@ -13,19 +13,19 @@ import java.time.LocalTime;
 @Setter
 @NoArgsConstructor
 public class FilterDto {
-    private String date;
+    private String day;
     private String time;
     private int filterRange;
 
-    public FilterDto(String date, String time, int filterRange) {
-        this.date = date;
+    public FilterDto(String day, String time, int filterRange) {
+        this.day = day;
         this.time = time;
         this.filterRange = filterRange;
     }
 
     public Filters toEntity() {
         return Filters.builder()
-                .date(date)
+                .day(day)
                 .time(time)
                 .filterRange(filterRange)
                 .build();

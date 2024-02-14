@@ -1,0 +1,129 @@
+@import "color_font.css";
+
+* {
+  margin: 0;
+  color: var(--mainColor);
+}
+
+body {
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+}
+.borderLine {
+  border: 2px solid #f1f3f7;
+}
+
+/* main */
+main {
+  width: 100%;
+  height: auto;
+}
+main form{
+  width: 100%;
+  height: auto;
+}
+main form #cancelFrame {
+  width: 100%;
+  height: 5vh;
+  text-align: right;
+}
+main form #cancelFrame button {
+  width: auto;
+  height: 100%;
+  border: 0px;
+  border-radius: 20%;
+  padding: 1%;
+  box-sizing: border-box;
+}
+main form #cancelFrame button img {
+  width: auto;
+  height: 100%;
+}
+
+main form #warningRange {
+  width: 100%;
+  text-align: center;
+}
+
+main form #timeTable {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+}
+main form #timeTable tr {
+  width: 100%;
+  height: 10vh;
+}
+main form #timeTable tr td {
+  width: 20%;
+  height: 10vh;
+  text-align: center;
+}
+main form #timeTable tr td input,
+main form #timeTable tr td button {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  border: 0px;
+  background-color: white;
+}
+main form #timeTable tr td img {
+  width: 40%;
+  height: auto;
+  text-align: center;
+}
+main form #timeTable #topSection td {
+  padding: 13% 5% 0%;
+  box-sizing: border-box;
+}
+main form #timeTable #topSection td img {
+  transform: rotate(270deg);
+  box-sizing: border-box;
+  filter: invert(41%) sepia(88%) saturate(3663%) hue-rotate(228deg)
+    brightness(100%) contrast(90%);
+}
+main form #timeTable #bottomSection td {
+  padding: 0% 5% 13%;
+  box-sizing: border-box;
+}
+main form #timeTable #bottomSection td img {
+  transform: rotate(90deg);
+  box-sizing: border-box;
+  filter: invert(41%) sepia(88%) saturate(3663%) hue-rotate(228deg)
+    brightness(100%) contrast(90%);
+}
+
+main form #chooseWeek {
+  width: 100%;
+  height: 7vh;
+  text-align: center;
+  margin-bottom: 3vh;
+}
+main form #chooseWeek button {
+  width: 12%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid var(--mainColor);
+  color: var(--mainColor);
+  background-color: white;
+}
+main form #chooseWeek button:nth-child(n + 1) {
+  margin-left: auto;
+}
+
+main form #saveFrame {
+  width: 100%;
+  height: 8vh;
+  text-align: center;
+}
+main form #saveFrame button {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  border: 0px;
+  border-radius: 5%;
+  background-color: var(--mainColor);
+  color: white;
+}

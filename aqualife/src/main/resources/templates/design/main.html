@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="menuFrame">
+            <div id="menuIcon">
+                <img src="../image/h.png" alt="햄버거">
+            </div>
+            <div id="fishbowlInfoFrame">
+                <div class="fishbowlInfoInnerFrame">
+                    <div id="fishowlTitle" class="font_base">
+                        어항이름
+                    </div>
+                    <div id="fishbowlInfo" class="font_s">
+                        날짜, 시리얼넘버?
+                    </div>
+                </div>
+            </div>
+            <div id="fishbowlArrow">
+                <img id="fishbowlArrowImg" src="../image/downArrow.png" alt="아래화살표">
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="swiper mySwiper">
+            <div id="FunctionIcon" class="swiper-wrapper">
+                <div id="home" class="swiper-slide select">
+                    <img src="../image/home아이콘.png" alt="집">
+                </div>
+                <div id="water" class="swiper-slide">
+                    <img src="../image/filter아이콘.png" alt="환수">
+                </div>
+                <div id="light" class="swiper-slide">
+                    <img src="../image/light아이콘.png" alt="빛">
+                </div>
+                <div id="co2" class="swiper-slide">
+                    <img src="../image/co2아이콘.png" alt="co2">
+                </div>
+                <div id="ph" class="swiper-slide">
+                    <img src="../image/ph아이콘.png" alt="ph">
+                </div>
+                <div id="temp" class="swiper-slide">
+                    <img src="../image/temp아이콘.png" alt="temp">
+                </div>
+            </div>
+        </div>
+        <div id="fishbowlImg">
+            어항 이미지
+            <!-- <img src="" alt=""> -->
+        </div>
+        <div id="orderList">
+            <div id="orderItem">
+                <div id="colorBox">
+                    <div id="boxFrame">
+                        <img src="../image/dot아이콘.png" alt="점">
+                    </div>
+                </div>
+                <div id="orderSection">
+                    <div id="orderState" class="font_base">
+                        작업 완료 / 작업 중 / 예정
+                    </div>
+                    <div id="orderStateDetail" class="font_s">
+                        어떤 작업인 지 설명
+                    </div>
+                </div>
+            </div>
+            <div id="orderItem">
+                <div id="colorBox">
+                    <div id="boxFrame">
+                        <img src="../image/dot아이콘.png" alt="점">
+                    </div>
+                </div>
+                <div id="orderSection">
+                    <div id="orderState" class="font_base">
+                        작업 완료 / 작업 중 / 예정
+                    </div>
+                    <div id="orderStateDetail" class="font_s">
+                        어떤 작업인 지 설명
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script src="public.js"></script>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 4,
+        spaceBetween: 60,
+        freeMode: true,
+    })
+</script>
+
+
+</html>
