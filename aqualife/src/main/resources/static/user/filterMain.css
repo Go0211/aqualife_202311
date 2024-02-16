@@ -6,7 +6,7 @@
 }
 
 body {
-  width: 60%;
+  width: 100%;
   height: auto;
   margin: 0 auto;
 }
@@ -71,8 +71,10 @@ main {
 }
 main #FunctionIcon {
   width: 100%;
-  height: 10vh;
+  height: 8vh;
   margin-bottom: 5%;
+  display: flex;
+  justify-content: space-between;
 }
 main #FunctionIcon .swiper-slide {
   width: auto;

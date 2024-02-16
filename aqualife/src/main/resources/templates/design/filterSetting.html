@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="filterSetting.css">
+    <link rel="stylesheet" type="text/css" th:href="@{user/filterSetting.css}">
     <title>Document</title>
 </head>
 
 <body>
-    <main>
+    <form th:action="@{/filterSetting}" method="post">
         <div id="cancelFrame">
             <button>
                 <img src="../image/x아이콘.png" alt="x">
@@ -36,16 +36,17 @@
             </tr>
             <tr id="middleSection">
                 <td>
-                    <input type="text" id="hourNum" value="0">
+                    <input type="text" id="hourNum" name="hours" th:value="${filter.time.split(':')[0]} % 12">
                 </td>
                 <td>
                     :
                 </td>
                 <td>
-                    <input type="text" id="minuteNum" value="0">
+                    <input type="text" id="minuteNum" name="minutes" th:value="${filter.time.split(':')[1]}">
                 </td>
                 <td>
-                    <button id="chooseAMPM" type="button">am</button>
+                    <input type="hidden" id="inputampm" name="inputampm" th:value="${filter.time.split(':')[0]} > 12 ? 'pm' : 'am'">
+                    <button id="chooseAMPM" type="button" th:text="${filter.time.split(':')[0]} > 12 ? 'pm' : 'am'"></button>
                 </td>
             </tr>
             <tr id="bottomSection">
@@ -59,24 +60,24 @@
                 <td></td>
             </tr>
         </table>
-        <input type="hidden" id="dateValue" name="day">
+        <input type="hidden" id="dateValue" name="day" th:value="${filter.day}">
         <p class="borderLine" style="margin-bottom: 3vh;"></p>
         <div id="chooseWeek">
-            <button id="sun">Sun</button>
-            <button id="mon">Mon</button>
-            <button id="tue">Tue</button>
-            <button id="wed">Wed</button>
-            <button id="thu">Thu</button>
-            <button id="fri">Fri</button>
-            <button id="sat">Sat</button>
+            <button type="button" id="mon">Mon</button>
+            <button type="button" id="tue">Tue</button>
+            <button type="button" id="wed">Wed</button>
+            <button type="button" id="thu">Thu</button>
+            <button type="button" id="fri">Fri</button>
+            <button type="button" id="sat">Sat</button>
+            <button type="button" id="sun">Sun</button>
         </div>
-        <input type="hidden" id="filterRange">
+        <input type="hidden" id="filterRange" name="filterRange" th:value="${filter.filterRange}">
         <div id="saveFrame">
-            <button>save</button>
+            <button type="submit">save</button>
         </div>
-    </main>
+    </form>
 </body>
 
-<script src="filterSetting.js"></script>
+<script th:src="@{/js/filterSetting.js}"></script>
 
 </html>

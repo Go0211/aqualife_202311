@@ -1,10 +1,8 @@
 package com.aqualife.aqualife.controller;
 
 import com.aqualife.aqualife.model.Fishbowl;
-import com.aqualife.aqualife.model.Ph;
 import com.aqualife.aqualife.model.Temperature;
 import com.aqualife.aqualife.service.FishbowlService;
-import com.aqualife.aqualife.service.PhService;
 import com.aqualife.aqualife.service.TemperatureService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -44,7 +42,7 @@ public class TemperatureController {
         model.addAttribute("temperature", fishbowl.getTemperature());
         model.addAttribute("fishbowlList", fishbowlService.getAllFishbowl(email));
 
-        return "design/temperatureMain";
+        return "temperature/temperatureMain";
     }
 
     @GetMapping("temperatureSetting")
@@ -58,7 +56,7 @@ public class TemperatureController {
         model.addAttribute("temperatureSetting",
                 temperatureService.getTemperature(email, fishbowl));
 
-        return "design/temperatureSetting";
+        return "temperature/temperatureSetting";
     }
 
     @PostMapping("temperatureSetting")

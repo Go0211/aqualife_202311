@@ -6,7 +6,7 @@
 }
 
 body {
-  width: 60%;
+  width: 100%;
   height: auto;
   margin: 0 auto;
 }
@@ -14,17 +14,17 @@ body {
   border: 2px solid #f1f3f7;
 }
 
-/* main */
-main {
+/* form */
+form {
   width: 100%;
   height: auto;
 }
-main #cancelFrame {
+form #cancelFrame {
   width: 100%;
   height: 5vh;
   text-align: right;
 }
-main #cancelFrame button {
+form #cancelFrame button {
   width: auto;
   height: 100%;
   border: 0px;
@@ -32,32 +32,32 @@ main #cancelFrame button {
   padding: 1%;
   box-sizing: border-box;
 }
-main #cancelFrame button img {
+form #cancelFrame button img {
   width: auto;
   height: 100%;
 }
 
-main #timeTable {
+form #timeTable {
   width: 70%;
   height: auto;
   margin: 0 auto;
 }
-main #timeTable tr {
+form #timeTable tr {
   width: 100%;
   height: 10vh;
 }
-main #timeTable tr td {
+form #timeTable tr td {
   width: 15%;
   height: 10vh;
   text-align: center;
 }
-main #timeTable tr #filterRangeFrame {
+form #timeTable tr #filterRangeFrame {
   width: 25%;
   height: 10vh;
   text-align: center;
 }
-main #timeTable tr td input,
-main #timeTable tr td button {
+form #timeTable tr td input,
+form #timeTable tr td button {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -65,49 +65,49 @@ main #timeTable tr td button {
   border: 0px;
   background-color: white;
 }
-main #timeTable tr td img {
+form #timeTable tr td img {
   width: 70%;
   height: auto;
   text-align: center;
 }
-main #timeTable #topSection td {
+form #timeTable #topSection td {
   padding: 3% 5% 0%;
   box-sizing: border-box;
 }
-main #timeTable #topSection .waterPercent {
+form #timeTable #topSection .waterPercent {
   height: 25%;
   width: 100%;
 }
-main #timeTable #topSection .choose {
+form #timeTable #topSection .choose {
   height: 25%;
   width: 100%;
   background-color: var(--mainColor);
   color: white;
 }
-main #timeTable #topSection td img {
+form #timeTable #topSection td img {
   transform: rotate(270deg);
   box-sizing: border-box;
   filter: invert(41%) sepia(88%) saturate(3663%) hue-rotate(228deg)
     brightness(100%) contrast(90%);
 }
-main #timeTable #bottomSection td {
+form #timeTable #bottomSection td {
   padding: 0% 5% 3%;
   box-sizing: border-box;
 }
-main #timeTable #bottomSection td img {
+form #timeTable #bottomSection td img {
   transform: rotate(90deg);
   box-sizing: border-box;
   filter: invert(41%) sepia(88%) saturate(3663%) hue-rotate(228deg)
     brightness(100%) contrast(90%);
 }
 
-main #chooseWeek {
+form #chooseWeek {
   width: 100%;
   height: 7vh;
   text-align: center;
   margin-bottom: 3vh;
 }
-main #chooseWeek button {
+form #chooseWeek button {
   width: 12%;
   height: 100%;
   border-radius: 50%;
@@ -115,20 +115,20 @@ main #chooseWeek button {
   color: var(--mainColor);
   background-color: white;
 }
-main #chooseWeek button:nth-child(n + 1) {
+form #chooseWeek button:nth-child(n + 1) {
   margin-left: auto;
 }
-main #chooseWeek .choose {
+form #chooseWeek .choose {
   background-color: var(--mainColor);
   color: white;
 }
 
-main #saveFrame {
+form #saveFrame {
   width: 100%;
   height: 8vh;
   text-align: center;
 }
-main #saveFrame button {
+form #saveFrame button {
   width: 80%;
   height: 100%;
   margin: 0 auto;

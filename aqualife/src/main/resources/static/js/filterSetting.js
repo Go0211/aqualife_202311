@@ -4,6 +4,7 @@ var minuteUp = document.getElementById("minuteUp");
 var hourNum = document.getElementById("hourNum");
 var minuteNum = document.getElementById("minuteNum");
 var ampm = document.getElementById("chooseAMPM");
+var inputampm = document.getElementById("inputampm");
 
 var hourDown = document.getElementById("hourDown");
 var minuteDown = document.getElementById("minuteDown");
@@ -20,6 +21,46 @@ var wed = document.getElementById("wed");
 var thu = document.getElementById("thu");
 var fri = document.getElementById("fri");
 var sat = document.getElementById("sat");
+
+var dateValue = document.getElementById("dateValue");
+var settingTime = document.getElementById("settingTime");
+
+var filterRange = document.getElementById("filterRange");
+
+window.onload = function(){
+  filterSize(filterRange.value);
+  dateValue.value = parseInt(dateValue.value, 2);
+  var checker = dateValue.value;
+  if (Math.floor(checker / 64) == 1) {
+    mon.className = "choose";
+    checker %= 64;
+  }
+  if (Math.floor(checker / 32) == 1) {
+    tue.className = "choose";
+    checker %= 32;
+  }
+  if (Math.floor(checker / 16) == 1) {
+    wed.className = "choose";
+    checker %= 16;
+  }
+  if (Math.floor(checker / 8) == 1) {
+    thu.className = "choose";
+    checker %= 8;
+  }
+  if (Math.floor(checker / 4) == 1) {
+    fri.className = "choose";
+    checker %= 4;
+  }
+  if (Math.floor(checker / 2) == 1) {
+    sat.className = "choose";
+    checker %= 2;
+  }
+  if (Math.floor(checker / 1) == 1) {
+    sun.className = "choose";
+    checker %= 1;
+  }
+}
+
 
 hourUp.addEventListener("click", function () {
   hoursValues = parseInt(hourNum.value);
@@ -47,10 +88,12 @@ minuteDown.addEventListener("click", function () {
 });
 
 ampm.addEventListener("click", function () {
-  if (ampm.innerText == "am") {
-    ampm.innerText = "pm";
-  } else if (ampm.innerText == "pm") {
-    ampm.innerText = "am";
+  if (ampm.textContent == "am") {
+    ampm.textContent = "pm";
+    inputampm.value = "pm";
+  } else if (ampm.textContent == "pm") {
+    ampm.textContent = "am";
+    inputampm.value = "am";
   }
 });
 
@@ -90,9 +133,6 @@ percent25.addEventListener("click", function () {
 });
 
 function daySetting(dayCode) {
-  var dateValue = document.getElementById("dateValue");
-  var settingTime = document.getElementById("settingTime");
-
   if (dayCode == "mon") {
     if (mon.className != "choose") {
       dateValue.value = 64 + Number(dateValue.value);
@@ -155,8 +195,6 @@ function daySetting(dayCode) {
 }
 
 function filterSize(size) {
-  var filterRange = document.getElementById("filterRange");
-
   if (size == 1) {
     filterRange.value = "1";
     percent25.className = "choose";
