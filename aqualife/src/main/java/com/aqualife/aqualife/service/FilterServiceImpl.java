@@ -86,4 +86,19 @@ public class FilterServiceImpl implements FilterService {
     public Filters getFilter(Fishbowl fishbowl) {
         return fishbowl.getFilter();
     }
+
+    @Override
+    public int nowFilterValue(String email, String fishbowlName) throws ExecutionException, InterruptedException {
+        String fName = email +"_" + fishbowlName;
+
+        Firestore firestore = FirestoreClient.getFirestore();
+        DocumentReference documentReference =
+                firestore.collection(COLLECTION_NAME).document(fName);
+        ApiFuture<DocumentSnapshot> apiFuture = documentReference.get();
+        DocumentSnapshot documentSnapshot = apiFuture.get();
+
+        String filterValue = String.valueOf(documentSnapshot.toObject(Fishbowl.class).getState().get(2));
+
+        return Integer.parseInt(filterValue);
+    }
 }

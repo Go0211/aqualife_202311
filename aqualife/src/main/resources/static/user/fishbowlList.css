@@ -1,0 +1,59 @@
+html {
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
+main {
+  width: 60%;
+  height: 100%;
+  margin: 0 auto;
+}
+main .mainFrame {
+  width: 100%;
+  height: 100%;
+}
+main .mainFrame .listDiv {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  margin-bottom: 2vh;
+}
+main .mainFrame .listDiv a {
+  width: 80%;
+  height: 100%;
+  display: block;
+  text-decoration: none;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+main .mainFrame .listDiv a p {
+  width: 100%;
+  margin: 0 10%;
+}
+main .mainFrame .listDiv .nameChangeBtn {
+  width: 10%;
+  height: 100%;
+  background-color: #30ff44;
+  margin: 0 2%;
+}
+main .mainFrame .listDiv .deleteBtn {
+  width: 10%;
+  height: 100%;
+  background-color: #ff2f2f;
+}
+main .mainFrame .listDiv button img {
+  width: 100%;
+  height: auto;
+  padding: 30%;
+  box-sizing: border-box;
+}
+main .mainFrame .newMake {
+  width: 100%;
+  height: 10%;
+  background-color: var(--mainColor);
+  border-radius: 10px;
+}

@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{user/login.css}">
+    <title>Document</title>
 </head>
+
 <body>
-<form th:action="@{/login}" method="post">
-    <input type="text" name="email" placeholder="email" />
-    <input type="password" name="password" placeholder="password" />
-    <button type="submit">login</button>
-</form>
-<a th:href="@{/findId}">아이디 찾기(준비중)</a>
-<a th:href="@{/findPw}">비밀번호 찾기</a>
-<a th:href="@{/join}">회원가입</a>
+
 </body>
+<main>
+    <form th:action="@{/login}" method="post">
+        <div class="imgFrame">
+            <img th:src="@{image/aqualife.png}" alt="로고">
+        </div>
+        <input type="text" name="email" placeholder="email" />
+        <input type="password" name="password" placeholder="password" />
+        <button type="submit">login</button>
+    </form>
+</main>
+
 </html>

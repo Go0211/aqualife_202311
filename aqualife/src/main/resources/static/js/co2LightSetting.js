@@ -1,6 +1,3 @@
-var onBtn = document.getElementById("onBtn");
-var offBtn = document.getElementById("offBtn");
-
 var startHourUp = document.getElementById("startHourUp");
 var startMinuteUp = document.getElementById("startMinuteUp");
 var startHourNum = document.getElementById("startHourNum");

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.aqualife'
-version = '0.0.1-SNAPSHOT'
+version = 'sample'
 
 java {
 	sourceCompatibility = '21'

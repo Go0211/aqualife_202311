@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{user/fishbowlRename.css}">
+    <title>create fishbowl</title>
+</head>
+
+<body>
+    <main>
+        <form th:action="@{/fishbowlRename}" method="post">
+            <input type="hidden" name="fishbowl_beforeName" th:value="${fishbowlName}"/>
+            <input type="text" name="fishbowl_afterName" placeholder="fishbowl" />
+            <button type="submit">이름 변경하기</button>
+        </form>
+    </main>
+</body>
+
+</html>

@@ -41,7 +41,7 @@ public class FishbowlServiceImpl implements FishbowlService {
                     .light(lightList)
                     .ph(new Ph(9.9, 0.0, 5.0))
                     .temperature(new Temperature(50, 50))
-                    .filter(filters)
+                    .filter(new Filters("0000000", "0:0", 0))
                     .state(stateList)
                     .build();
 

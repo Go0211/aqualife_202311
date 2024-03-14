@@ -27,17 +27,23 @@ public class UserController {
                         HttpServletRequest httpServletRequest) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);
 
-        String check;
-
-        check = userService.login(email, password);
+        String check = userService.login(email, password);
 
         if (check != null && check.equals("true")) {
             session.setAttribute("email", email);
             session.setMaxInactiveInterval(-1);
             return "redirect:/fishbowlList";
         } else {
-            return "fault";
+            return "redirect:/login";
         }
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest httpServletRequest) {
+        HttpSession session = httpServletRequest.getSession(true);
+        session.invalidate();
+
+        return "redirect:/login";
     }
 
     @GetMapping("/join")

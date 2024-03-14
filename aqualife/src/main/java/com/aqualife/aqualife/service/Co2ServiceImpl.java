@@ -22,8 +22,13 @@ public class Co2ServiceImpl implements Co2Service{
     @Override
     public List<Co2> getAllCo2(Fishbowl fishbowlData) {
         List<Co2> co2List = fishbowlData.getCo2();
+        List<Co2> firstExceptCo2List = new ArrayList<>();
 
-        return co2List;
+        for (int i = 1; i < co2List.size(); i++) {
+            firstExceptCo2List.add(co2List.get(i));
+        }
+
+        return firstExceptCo2List;
     }
 
     public Co2 getCo2(String email, String fishbowl, int co2Stat) throws Exception{
@@ -123,6 +128,25 @@ public class Co2ServiceImpl implements Co2Service{
                     !fishbowl1.getCo2().get(co2Index).isState());
 
             fishbowl1.getCo2().set(co2Index, changeCo2);
+            documentReference.set(fishbowl1);
+        }
+    }
+
+    @Override
+    public void co2StateChange(String email, String fishbowl, boolean state) throws Exception {
+        String fishbowlName = email + "_" + fishbowl;
+
+        Firestore firestore = FirestoreClient.getFirestore();
+        DocumentReference documentReference =
+                firestore.collection(COLLECTION_NAME).document(fishbowlName);
+        ApiFuture<DocumentSnapshot> apiFuture = documentReference.get();
+        DocumentSnapshot documentSnapshot = apiFuture.get();
+
+        Fishbowl fishbowl1;
+        if (documentSnapshot.exists()) {
+            fishbowl1 = documentSnapshot.toObject(Fishbowl.class);
+            List<Object> stateList = fishbowl1.getState();
+            stateList.set(0, state);
             documentReference.set(fishbowl1);
         }
     }

@@ -5,6 +5,7 @@ import com.aqualife.aqualife.model.Co2;
 import com.aqualife.aqualife.model.Fishbowl;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public interface Co2Service {
 
@@ -17,4 +18,6 @@ public interface Co2Service {
     public void co2Create(String email, String fishbowl, Times times) throws Exception;
 
     public void co2ListStateChange(String email, String fishbowl, int co2Index) throws Exception;
+
+    void co2StateChange(String email, String fishbowl, boolean state) throws Exception;
 }

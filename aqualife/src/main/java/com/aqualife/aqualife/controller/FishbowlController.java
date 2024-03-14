@@ -23,19 +23,23 @@ public class FishbowlController {
                        HttpServletRequest httpServletRequest,
                        Model model) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);
+        String emailSession = (String)session.getAttribute("email");
+
+        if (emailSession == null || emailSession.equals("")) {
+            return "redirect:/login";
+        }
+
         session.setAttribute("fishbowl", fishbowl);
 
-        String email = (String)session.getAttribute("email");
-
         model.addAttribute("fishbowlData",
-                fishbowlService.getFishbowl(email, fishbowl));
+                fishbowlService.getFishbowl(emailSession, fishbowl));
 
         return "user/main";
     }
 
     @GetMapping("createFishbowl")
     public String createFishbowl() {
-        return "fishbowl/fishbowlCreate";
+        return "design/fishbowlCreate";
     }
 
     @PostMapping("createFishbowl")
@@ -64,7 +68,7 @@ public class FishbowlController {
 
         model.addAttribute("fishbowlList", fishbowlList);
 
-        return "fishbowl/fishbowlList";
+        return "design/fishbowlList";
     }
 
     @GetMapping("fishbowlDelete")
@@ -87,7 +91,7 @@ public class FishbowlController {
                                  @RequestParam String fishbowl) {
         model.addAttribute("fishbowlName", fishbowl);
 
-        return "fishbowl/fishbowlRename";
+        return "design/fishbowlRename";
     }
 
 

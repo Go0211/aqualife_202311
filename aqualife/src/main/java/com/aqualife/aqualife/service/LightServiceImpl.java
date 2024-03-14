@@ -12,7 +12,9 @@ import com.google.firebase.cloud.FirestoreClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RequiredArgsConstructor
 @Service
@@ -22,8 +24,13 @@ public class LightServiceImpl implements LightService{
     @Override
     public List<Light> getAllLight(Fishbowl fishbowlData) {
         List<Light> lightList = fishbowlData.getLight();
+        List<Light> firstExceptLightList = new ArrayList<>();
 
-        return lightList;
+        for (int i = 1; i < lightList.size(); i++) {
+            firstExceptLightList.add(lightList.get(i));
+        }
+
+        return firstExceptLightList;
     }
 
     public Light getLight(String email, String fishbowl, int lightStat) throws Exception {
@@ -121,6 +128,47 @@ public class LightServiceImpl implements LightService{
                     !fishbowl1.getLight().get(lightIndex).isState());
 
             fishbowl1.getLight().set(lightIndex, changeLight);
+            documentReference.set(fishbowl1);
+        }
+    }
+
+    @Override
+    public void lightListStateChange(String email, String fishbowl, int lightIndex) throws ExecutionException, InterruptedException {
+        String fishbowlName = email +"_" + fishbowl;
+        Firestore firestore = FirestoreClient.getFirestore();
+        DocumentReference documentReference =
+                firestore.collection(COLLECTION_NAME).document(fishbowlName);
+        ApiFuture<DocumentSnapshot> apiFuture = documentReference.get();
+        DocumentSnapshot documentSnapshot = apiFuture.get();
+
+        Fishbowl fishbowl1 = null;
+        if (documentSnapshot.exists()) {
+            fishbowl1 = documentSnapshot.toObject(Fishbowl.class);
+
+            Light changeLight = new Light(fishbowl1.getLight().get(lightIndex).getStartTime(),
+                    fishbowl1.getLight().get(lightIndex).getEndTime(),
+                    !fishbowl1.getLight().get(lightIndex).isState());
+
+            fishbowl1.getLight().set(lightIndex, changeLight);
+            documentReference.set(fishbowl1);
+        }
+    }
+
+    @Override
+    public void lightStateChange(String email, String fishbowl, boolean state) throws Exception {
+        String fishbowlName = email + "_" + fishbowl;
+
+        Firestore firestore = FirestoreClient.getFirestore();
+        DocumentReference documentReference =
+                firestore.collection(COLLECTION_NAME).document(fishbowlName);
+        ApiFuture<DocumentSnapshot> apiFuture = documentReference.get();
+        DocumentSnapshot documentSnapshot = apiFuture.get();
+
+        Fishbowl fishbowl1;
+        if (documentSnapshot.exists()) {
+            fishbowl1 = documentSnapshot.toObject(Fishbowl.class);
+            List<Object> stateList = fishbowl1.getState();
+            stateList.set(1, state);
             documentReference.set(fishbowl1);
         }
     }

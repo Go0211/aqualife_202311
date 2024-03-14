@@ -38,10 +38,24 @@ public class LightController {
 
         Fishbowl fishbowl = fishbowlService.getFishbowl(email, fishbowlName);
 //        model.addAttribute("fishbowlLight", fishbowl.getLight());
+        model.addAttribute("lightState", fishbowl.getState().get(1));
         model.addAttribute("fishbowlList", fishbowlService.getAllFishbowl(email));
         model.addAttribute("lightList", lightService.getAllLight(fishbowl));
 
         return "light/lightMain";
+    }
+
+    @GetMapping("nowLightStateChange")
+    public String nowCo2StateChange(HttpServletRequest httpServletRequest,
+                                    Model model,
+                                    @RequestParam boolean state) throws Exception{
+        HttpSession session = httpServletRequest.getSession(true);
+        String email = (String)session.getAttribute("email");
+        String fishbowl = (String) session.getAttribute("fishbowl");
+
+        lightService.lightStateChange(email, fishbowl, state);
+
+        return "redirect:/co2Main";
     }
 
     @GetMapping("lightCreate")
@@ -142,6 +156,18 @@ public class LightController {
         String fishbowl = (String)session.getAttribute("fishbowl");
 
         lightService.lightStateChange(email, fishbowl, lightIndex);
+
+        return "redirect:/lightMain";
+    }
+
+    @GetMapping("lightListStateChange")
+    public String lightListStateChange(@RequestParam int lightIndex,
+                                         HttpServletRequest httpServletRequest) throws Exception {
+        HttpSession session = httpServletRequest.getSession(true);
+        String email = (String)session.getAttribute("email");
+        String fishbowl = (String)session.getAttribute("fishbowl");
+
+        lightService.lightListStateChange(email, fishbowl, lightIndex);
 
         return "redirect:/lightMain";
     }

@@ -32,13 +32,13 @@
 <main>
     <div class="swiper mySwiper">
         <div id="FunctionIcon" class="swiper-wrapper">
-            <div id="home" class="swiper-slide select">
+            <div id="home" class="swiper-slide">
                 <img th:src="@{image/home아이콘.png}" alt="집">
             </div>
             <div id="water" class="swiper-slide">
                 <img th:src="@{image/filter아이콘.png}" alt="환수">
             </div>
-            <div id="light" class="swiper-slide">
+            <div id="light" class="swiper-slide select">
                 <img th:src="@{image/light아이콘.png}" alt="빛">
             </div>
             <div id="co2" class="swiper-slide">
@@ -57,6 +57,10 @@
         <!-- <img src="" alt=""> -->
     </div>
     <div id="lightList">
+        <div id="onOffFrame">
+            <button id="lightOnSetting" th:classappend="${lightState} ? settingState : noSettingState">on</button>
+            <button id="lightOffSetting" th:classappend="${!lightState} ? settingState : noSettingState">off</button>
+        </div>
         <div id="lightAdd">
             <a th:href="@{/lightCreate}">Add +</a>
         </div>
@@ -81,13 +85,13 @@
                 <div id="powerFrame">
                     <div class="powerOuter" th:if="${list.state == false}">
                         <div class="btnFalse"
-                             th:onclick="|location.href='@{/lightListStateChangeMain(lightIndex=${listStat.index})}'|">
+                             th:onclick="|location.href='@{/lightListStateChange(lightIndex=${listStat.index})}'|">
                             <img src="../image/power아이콘.png" alt="전원">
                         </div>
                     </div>
                     <div class="powerOuter" th:if="${list.state == true}">
                         <div class="btnTrue"
-                             th:onclick="|location.href='@{/lightListStateChangeMain(lightIndex=${listStat.index})}'|">
+                             th:onclick="|location.href='@{/lightListStateChange(lightIndex=${listStat.index})}'|">
                             <img src="../image/power아이콘.png" alt="전원">
                         </div>
                     </div>
@@ -99,14 +103,45 @@
 </main>
 </body>
 
-<script  th:src="@{js/public.js}"></script>
+<script th:src="@{js/public.js}"></script>
+<script type="text/javascript" th:src="@{http://code.jquery.com/jquery-3.5.1.min.js}"></script>
+<script>
+    var lightOnSetting = document.getElementById("lightOnSetting");
+    var lightOffSetting = document.getElementById("lightOffSetting");
 
-<!--<script>-->
-<!--    var swiper = new Swiper(".mySwiper", {-->
-<!--        slidesPerView: 4,-->
-<!--        spaceBetween: 60,-->
-<!--        freeMode: true,-->
-<!--    })-->
-<!--</script>-->
+    lightOnSetting.addEventListener("click", function () {
+        lightOnSetting.className = "settingState";
+        lightOffSetting.className = "";
 
+        $.ajax({
+            type: 'get',   //get방식으로 명시
+            url : 'nowLightStateChange?state=true',  //이동할 jsp 파일 주소
+            dataType:'text',   //문자형식으로 받기
+            success: function(data){   //데이터 주고받기 성공했을 경우 실행할 결과
+                //function(data)를 쓰게 되면 전달받은 데이터가 data안에 담아서 들어오게 된다.
+
+            },
+            error:function(){   //데이터 주고받기가 실패했을 경우 실행할 결과
+
+            }
+        })
+    });
+    lightOffSetting.addEventListener("click", function () {
+        lightOnSetting.className = "";
+        lightOffSetting.className = "settingState";
+
+        $.ajax({
+            type: 'get',   //get방식으로 명시
+            url : 'nowLightStateChange?state=false',  //이동할 jsp 파일 주소
+            dataType:'text',   //문자형식으로 받기
+            success: function(data){   //데이터 주고받기 성공했을 경우 실행할 결과
+                //function(data)를 쓰게 되면 전달받은 데이터가 data안에 담아서 들어오게 된다.
+
+            },
+            error:function(){   //데이터 주고받기가 실패했을 경우 실행할 결과
+
+            }
+        })
+    });
+</script>
 </html>

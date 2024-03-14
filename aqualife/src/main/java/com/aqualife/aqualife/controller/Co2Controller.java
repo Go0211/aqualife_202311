@@ -35,11 +35,25 @@ public class Co2Controller {
 
         Fishbowl fishbowl = fishbowlService.getFishbowl(email, fishbowlName);
 //        model.addAttribute("fishbowlCo2", fishbowl.getState().get(0));
+        model.addAttribute("co2State", fishbowl.getState().get(0));
         model.addAttribute("fishbowlList", fishbowlService.getAllFishbowl(email));
         model.addAttribute("co2List", co2Service.getAllCo2(fishbowl));
 
 
         return "co2/co2Main";
+    }
+
+    @GetMapping("nowCo2StateChange")
+    public String nowCo2StateChange(HttpServletRequest httpServletRequest,
+                                    Model model,
+                                    @RequestParam boolean state) throws Exception{
+        HttpSession session = httpServletRequest.getSession(true);
+        String email = (String)session.getAttribute("email");
+        String fishbowl = (String) session.getAttribute("fishbowl");
+
+        co2Service.co2StateChange(email, fishbowl, state);
+
+        return "redirect:/co2Main";
     }
 
     @GetMapping("co2statechange")

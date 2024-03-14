@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>rename</title>
+    <link rel="stylesheet" type="text/css" th:href="@{user/fishbowlRename.css}">
 </head>
 <body>
 <form th:action="@{/fishbowlRename}" method="post">
     <input type="hidden" name="fishbowl_beforeName" th:value="${fishbowlName}">
     <input type="text" name="fishbowl_afterName" placeholder="fishbowl" />
-    <button type="submit">login</button>
+    <button type="submit">이름변경하기</button>
 </form>
 </body>
 </html>

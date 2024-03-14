@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -20,6 +21,8 @@ public class RealTimeDataCheckController {
     @GetMapping("realTimeDataCheck")
     public String realTimeDataCheck(HttpServletRequest httpServletRequest) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);
+
+        System.out.println(LocalTime.now().getHour());
 
         realTimeDataCheckService.checkCo2Data();
         realTimeDataCheckService.checkLightData();

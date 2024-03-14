@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{user/fishbowlCreate.css}">
+    <title>create fishbowl</title>
+</head>
+
+<body>
+    <main>
+        <form th:action="@{/createFishbowl}" method="post">
+            <input type="text" name="fishbowl" placeholder="fishbowl" />
+            <button type="submit">어항 만들기</button>
+        </form>
+    </main>
+</body>
+
+</html>

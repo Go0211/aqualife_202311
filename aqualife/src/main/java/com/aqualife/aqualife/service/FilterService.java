@@ -6,6 +6,7 @@ import com.aqualife.aqualife.model.Fishbowl;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public interface FilterService {
     public void filterSetting(String email, String fishbowl, int dayDecimalCode, String time, int filterRange) throws Exception;
@@ -14,4 +15,6 @@ public interface FilterService {
                              String time, int filterRange) throws Exception;
 
     Filters getFilter(Fishbowl fishbowl);
+
+    int nowFilterValue(String email, String fishbowlName) throws ExecutionException, InterruptedException;
 }

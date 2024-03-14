@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{user/fishbowlList.css}">
+    <title>Document</title>
+</head>
+
+<body>
+<main>
+    <div class="mainFrame">
+        <div class="listDiv" th:each="fbList : ${fishbowlList}">
+            <!-- 반복문용 -->
+            <a th:href="@{/(fishbowl=${fbList.getFishbowl()})}">
+                <p th:text="${fbList.getFishbowl()}"></p>
+            </a>
+            <button class="nameChangeBtn"
+                    th:onclick="|location.href='@{/fishbowlRename(fishbowl=${fbList.getFishbowl()})}'|">
+                <img class="change" th:src="@{image/filter아이콘.png}" alt="">
+            </button>
+            <button class="deleteBtn"
+                    th:onclick="|location.href='@{/fishbowlDelete(fishbowl=${fbList.getFishbowl()})}'|">
+                <img class="delete" th:src="@{image/delete아이콘.png}" alt="">
+            </button>
+        </div>
+        <button class="newMake" th:onclick="|location.href='@{/createFishbowl}'|">
+            새로 만들기
+        </button>
+    </div>
+</main>
+
+</body>
+
+</html>

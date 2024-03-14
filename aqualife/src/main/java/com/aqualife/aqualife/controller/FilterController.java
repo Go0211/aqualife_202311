@@ -11,10 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
-
 @Controller
 @RequiredArgsConstructor
 public class FilterController {
@@ -41,8 +37,9 @@ public class FilterController {
 //        model.addAttribute("fishbowlCo2", fishbowl.getState().get(0));
         model.addAttribute("fishbowlList", fishbowlService.getAllFishbowl(email));
         model.addAttribute("filter", filterService.getFilter(fishbowl));
+        model.addAttribute("nowFilterValue", filterService.nowFilterValue(email, fishbowlName));
 
-        return "design/filterMain";
+        return "filter/filterMain";
     }
 
     @GetMapping("filterSetting")
@@ -55,7 +52,7 @@ public class FilterController {
 
         model.addAttribute("filter", filterData);
 
-        return "design/filterSetting";
+        return "filter/filterSetting";
     }
 
     @PostMapping("filterSetting")
