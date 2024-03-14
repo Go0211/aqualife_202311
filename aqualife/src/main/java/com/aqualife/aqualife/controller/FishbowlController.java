@@ -48,7 +48,6 @@ public class FishbowlController {
         HttpSession session = httpServletRequest.getSession(true);
 
         String email = (String)session.getAttribute("email");
-        System.out.println("email = " + email);
 
         boolean fishbowlCheck = fishbowlService.createFishbowl(email, fishbowl);
 
